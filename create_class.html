@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo lớp học mới - AI Learning</title>
+    <link rel="stylesheet" href="create_class_style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Tạo Lớp Học Mới</h2>
+        
+        <form action="create_class_process.php" method="POST">
+            <div class="form-group">
+                <label for="class_name">Tên lớp học</label>
+                <input type="text" id="class_name" name="class_name" 
+                       placeholder="Ví dụ: Lập trình PHP nâng cao" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Mô tả lớp học</label>
+                <textarea id="description" name="description" rows="5" 
+                          placeholder="Mô tả mục tiêu lớp học hoặc nội dung giảng dạy..."></textarea>
+            </div>
+
+            <button type="submit" name="btn_create">Xác nhận tạo lớp</button>
+            
+            <a href="user_dashboard.html" class="back-link">← Quay lại Dashboard</a>
+        </form>
+    </div>
+
+    <script>
+        // Thông báo đơn giản khi nhấn nút
+        document.querySelector('form').onsubmit = function() {
+            console.log("Đang xử lý tạo lớp học và mã mời...");
+        };
+    </script>
+</body>
+</html>
