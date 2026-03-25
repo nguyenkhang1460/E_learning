@@ -30,8 +30,12 @@ if (isset($_GET['delete_id'])) {
     $delete_id = mysqli_real_escape_string($conn, $_GET['delete_id']);
     $sql_delete = "DELETE FROM lectures WHERE id = '$delete_id' AND class_id = '$class_id'";
     if (mysqli_query($conn, $sql_delete)) {
-        echo "<script>alert('Đã xóa bài giảng!'); window.location='manage_lectures.php?id=$class_id';</script>";
+        $_SESSION['success'] = 'Đã xóa bài giảng thành công!';
+    } else {
+        $_SESSION['error'] = 'Lỗi khi xóa bài giảng!';
     }
+    header("Location: manage_lectures.php?id=$class_id");
+    exit();
 }
 
 // Lấy danh sách bài giảng
@@ -48,155 +52,17 @@ $total_lectures = mysqli_num_rows($result_lectures);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý bài giảng - <?php echo htmlspecialchars($class_data['class_name']); ?></title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="user_style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .stats-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        .stats-card h3 {
-            margin: 0;
-            font-size: 48px;
-        }
-        .stats-card p {
-            margin: 10px 0 0 0;
-            font-size: 16px;
-        }
-        .lecture-item {
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: 0.3s;
-        }
-        .lecture-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-        }
-        .lecture-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        .lecture-title {
-            font-size: 22px;
-            font-weight: bold;
-            color: #333;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .lecture-info {
-            color: #777;
-            font-size: 14px;
-            margin: 8px 0;
-        }
-        .lecture-actions {
-            margin-top: 20px;
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        .btn-action {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: 0.3s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-        }
-        .btn-view {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        .btn-view:hover {
-            background: linear-gradient(135deg, #5568d3 0%, #6a3f8f 100%);
-        }
-        .btn-edit {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-        }
-        .btn-edit:hover {
-            background: linear-gradient(135deg, #d67fe2 0%, #e04456 100%);
-        }
-        .btn-delete {
-            background: #dc3545;
-            color: white;
-        }
-        .btn-delete:hover {
-            background: #c82333;
-        }
-        .btn-upload {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 16px;
-            margin-bottom: 30px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .btn-upload:hover {
-            background: linear-gradient(135deg, #0e8073 0%, #2dd168 100%);
-            transform: translateY(-2px);
-        }
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            background: white;
-            border-radius: 10px;
-        }
-        .empty-state i {
-            font-size: 60px;
-            color: #ddd;
-            margin-bottom: 20px;
-        }
-        .file-type-badge {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 5px;
-            font-size: 11px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        .badge-pdf {
-            background: #ff4757;
-            color: white;
-        }
-        .badge-doc {
-            background: #2e86de;
-            color: white;
-        }
-        .badge-image {
-            background: #26de81;
-            color: white;
-        }
-    </style>
 </head>
-<body>
+<body class="manage-lectures-page">
     <nav class="navbar">
         <div class="logo">
             <i class="fas fa-graduation-cap"></i> AI-Learning
         </div>
         <div class="nav-links">
-            <a href="manage_class.php?id=<?php echo $class_id; ?>" style="text-decoration: none; color: #666;">
+            <a href="manage_class.php?id=<?php echo $class_id; ?>" class="manage-lectures-back-link">
                 <i class="fas fa-arrow-left"></i> Quay lại lớp học
             </a>
         </div>
@@ -207,6 +73,18 @@ $total_lectures = mysqli_num_rows($result_lectures);
             <h1><i class="fas fa-folder-open"></i> Quản lý bài giảng</h1>
             <p class="subtitle">Lớp: <strong><?php echo htmlspecialchars($class_data['class_name']); ?></strong></p>
         </div>
+
+        <?php if (isset($_SESSION['success'])): ?>
+            <div class="manage-lectures-alert manage-lectures-alert-success">
+                <i class="fas fa-check-circle"></i> <?php echo $_SESSION['success']; unset($_SESSION['success']); ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if (isset($_SESSION['error'])): ?>
+            <div class="manage-lectures-alert manage-lectures-alert-error">
+                <i class="fas fa-exclamation-circle"></i> <?php echo $_SESSION['error']; unset($_SESSION['error']); ?>
+            </div>
+        <?php endif; ?>
 
         <div class="stats-card">
             <h3><?php echo $total_lectures; ?></h3>
@@ -259,7 +137,7 @@ $total_lectures = mysqli_num_rows($result_lectures);
                     
                     <div class="lecture-info">
                         <i class="fas fa-link"></i> URL: 
-                        <a href="<?php echo htmlspecialchars($lecture['file_url']); ?>" target="_blank" style="color: #667eea;">
+                        <a href="<?php echo htmlspecialchars($lecture['file_url']); ?>" target="_blank" class="lecture-url-link">
                             <?php echo substr($lecture['file_url'], 0, 60); ?>...
                         </a>
                     </div>
@@ -271,7 +149,7 @@ $total_lectures = mysqli_num_rows($result_lectures);
                         <a href="edit_lecture.php?id=<?php echo $lecture['id']; ?>&class_id=<?php echo $class_id; ?>" class="btn-action btn-edit">
                             <i class="fas fa-edit"></i> Chỉnh sửa
                         </a>
-                        <button class="btn-action btn-delete" onclick="confirmDelete(<?php echo $lecture['id']; ?>)">
+                        <button class="btn-action btn-delete js-confirm-delete-lecture" data-lecture-id="<?php echo $lecture['id']; ?>" type="button">
                             <i class="fas fa-trash"></i> Xóa
                         </button>
                     </div>
@@ -282,19 +160,14 @@ $total_lectures = mysqli_num_rows($result_lectures);
                 <i class="fas fa-folder-open"></i>
                 <h2>Chưa có bài giảng nào</h2>
                 <p>Hãy đăng tải bài giảng đầu tiên cho lớp học này.</p>
-                <a href="upload_lecture.php?id=<?php echo $class_id; ?>" class="btn-upload" style="margin-top: 20px;">
+                <a href="upload_lecture.php?id=<?php echo $class_id; ?>" class="btn-upload empty-upload-link">
                     <i class="fas fa-cloud-upload-alt"></i> Đăng tải ngay
                 </a>
             </div>
         <?php endif; ?>
     </div>
 
-    <script>
-        function confirmDelete(lectureId) {
-            if (confirm('Bạn có chắc chắn muốn xóa bài giảng này?\nHành động này không thể hoàn tác!')) {
-                window.location.href = 'manage_lectures.php?id=<?php echo $class_id; ?>&delete_id=' + lectureId;
-            }
-        }
-    </script>
+    <div id="manageLecturesConfig" data-class-id="<?php echo $class_id; ?>" hidden></div>
+    <script src="xu_ly.js"></script>
 </body>
 </html>

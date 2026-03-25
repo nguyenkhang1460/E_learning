@@ -2,7 +2,7 @@
 $host = "localhost";
 $db_user = "root"; // Mặc định của XAMPP
 $db_pass = "";     // Mặc định của XAMPP là trống
-$db_name = "e_learning"; // Thay bằng tên Database bạn đã tạo
+$db_name = "e_learning"; // tên Database
 
 $conn = mysqli_connect($host, $db_user, $db_pass, $db_name);
 

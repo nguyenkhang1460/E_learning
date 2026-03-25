@@ -2,6 +2,15 @@
 session_start();
 include 'db_config.php';
 
+$api_config_file = __DIR__ . '/config/api_keys.php';
+if (!file_exists($api_config_file)) {
+    echo "<script>alert('Thiếu file cấu hình API. Vui lòng tạo config/api_keys.php từ file mẫu.'); window.history.back();</script>";
+    exit();
+}
+
+$api_config = require $api_config_file;
+$cloudinary = $api_config['cloudinary'] ?? [];
+
 // Kiểm tra đăng nhập
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
@@ -23,20 +32,39 @@ if (!$assignment) {
     exit();
 }
 
-// Kiểm tra quyền xóa (chỉ chủ lớp mới được xóa)
-if ($assignment['owner_id'] != $current_user_id) {
+// Kiểm tra quyền xóa (chỉ admin hoặc chủ lớp mới được xóa)
+$is_admin = (isset($_SESSION['role']) && $_SESSION['role'] == 'admin');
+if (!$is_admin && $assignment['owner_id'] != $current_user_id) {
     echo "<script>alert('Bạn không có quyền xóa bài kiểm tra này!'); window.history.back();</script>";
     exit();
 }
 
+// Kiểm tra xem đã có sinh viên nộp bài chưa
+$sql_check = "SELECT COUNT(*) as total FROM submissions WHERE assignment_id = '$assignment_id'";
+$result_check = mysqli_query($conn, $sql_check);
+$check_data = mysqli_fetch_assoc($result_check);
+
+if ($check_data['total'] > 0) {
+    echo "<script>
+        alert('❌ KHÔNG THỂ XÓA BÀI KIỂM TRA NÀY!\\n\\nĐã có " . $check_data['total'] . " sinh viên nộp bài.\\nVì lý do bảo mật và công bằng, bài kiểm tra đã có người làm không được phép xóa.');
+        window.history.back();
+    </script>";
+    exit();
+}
+
 // Thông tin Cloudinary
-$cloud_name = "dwvsbcegm";
-$api_key = "833377455192851";
-$api_secret = "Iw16cRIVLYnANWWdjGKUQyD5YQ4"; // Bạn cần thay thế bằng API Secret thực của Cloudinary
+$cloud_name = $cloudinary['cloud_name'] ?? '';
+$api_key = $cloudinary['api_key'] ?? '';
+$api_secret = $cloudinary['api_secret'] ?? '';
+
+if (empty($cloud_name) || empty($api_key) || empty($api_secret)) {
+    echo "<script>alert('Thiếu cấu hình Cloudinary trong config/api_keys.php'); window.history.back();</script>";
+    exit();
+}
 
 // Hàm lấy public_id từ URL Cloudinary
 function getPublicIdFromUrl($url) {
-    // URL mẫu: https://res.cloudinary.com/dwvsbcegm/image/upload/v1234567890/abc123.pdf
+    // URL mẫu: https://res.cloudinary.com/<cloud_name>/image/upload/v1234567890/abc123.pdf
     $pattern = '/\/upload\/(?:v\d+\/)?(.+)\.[a-z]{3,4}$/i';
     if (preg_match($pattern, $url, $matches)) {
         return $matches[1];

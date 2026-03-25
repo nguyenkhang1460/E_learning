@@ -1,0 +1,435 @@
+<mxfile host="app.diagrams.net" modified="2026-03-08T00:00:00.000Z" agent="draw.io" etag="E-Learning-Activity" version="24.0.0" type="device">
+  <diagram id="E-Learning-Activity-Diagram" name="E-Learning Activity Diagram">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Title -->
+        <mxCell id="title" value="SƠ ĐỒ ACTIVITY - HỆ THỐNG E-LEARNING" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="320" y="20" width="530" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Start -->
+        <mxCell id="start" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="555" y="80" width="40" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Login -->
+        <mxCell id="login" value="Login" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="515" y="150" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="start" target="login">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Decision: Vai trò? -->
+        <mxCell id="decision_role" value="Vai trò?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="505" y="230" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="login" target="decision_role">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ADMIN BRANCH -->
+        <!-- Admin Dashboard -->
+        <mxCell id="admin_dashboard" value="Admin Dashboard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="200" y="250" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge3" value="Admin" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="decision_role" target="admin_dashboard">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Decision: Chức năng Admin -->
+        <mxCell id="decision_admin_func" value="Chức năng&lt;br&gt;Admin?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="200" y="330" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="edge4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="admin_dashboard" target="decision_admin_func">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Quản lý hệ thống -->
+        <mxCell id="admin_manage" value="Xem thống kê&lt;br&gt;Quản lý người dùng" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="60" y="450" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="edge5" value="Quản lý&lt;br&gt;hệ thống" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="decision_admin_func" target="admin_manage">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- End Admin Manage -->
+        <mxCell id="end_admin1" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="110" y="540" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="admin_manage" target="end_admin1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Duyệt yêu cầu -->
+        <mxCell id="admin_approve" value="Xem yêu cầu&lt;br&gt;tham gia&lt;br&gt;Duyệt/Từ chối" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="240" y="450" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="edge7" value="Duyệt&lt;br&gt;yêu cầu" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="decision_admin_func" target="admin_approve">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- End Admin Approve -->
+        <mxCell id="end_admin2" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="290" y="550" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="admin_approve" target="end_admin2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- USER BRANCH -->
+        <!-- User Dashboard -->
+        <mxCell id="user_dashboard" value="User Dashboard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="730" y="250" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge9" value="User" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="decision_role" target="user_dashboard">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Decision: Chọn chế độ -->
+        <mxCell id="decision_user_mode" value="Chọn&lt;br&gt;chế độ?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="730" y="330" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="edge10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="user_dashboard" target="decision_user_mode">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Tạo lớp học -->
+        <mxCell id="create_class" value="Create Class" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="600" y="450" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge11" value="Tạo lớp học" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="decision_user_mode" target="create_class">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Decision: Tạo lớp mới -->
+        <mxCell id="decision_create_new" value="Tạo lớp&lt;br&gt;mới?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="590" y="530" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="edge12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="create_class" target="decision_create_new">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Nhập thông tin lớp -->
+        <mxCell id="create_new_class" value="Nhập thông tin&lt;br&gt;Generate Code&lt;br&gt;Trở thành Owner" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="450" y="650" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="edge13" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="decision_create_new" target="create_new_class">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Enter Code -->
+        <mxCell id="enter_code" value="Enter Code&lt;br&gt;Join Class" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="730" y="650" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="edge14" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="decision_create_new" target="enter_code">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Tham gia lớp học -->
+        <mxCell id="join_class" value="Find Class&lt;br&gt;Nhập mã mời" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="860" y="450" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="edge15" value="Tham gia&lt;br&gt;lớp học" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="decision_user_mode" target="join_class">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Decision: Mã hợp lệ -->
+        <mxCell id="decision_valid_code" value="Mã&lt;br&gt;hợp lệ?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="850" y="540" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="edge16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="join_class" target="decision_valid_code">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Join Success -->
+        <mxCell id="join_success" value="Tham gia&lt;br&gt;thành công" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="860" y="660" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="edge17" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="decision_valid_code" target="join_success">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Join Error -->
+        <mxCell id="join_error" value="Thông báo lỗi" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="655" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge18" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="decision_valid_code" target="join_error">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- End Join Error -->
+        <mxCell id="end_error" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="730" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="join_error" target="end_error">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Vào lớp học -->
+        <mxCell id="enter_class" value="Vào lớp học" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="665" y="760" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="create_new_class" target="enter_class">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="enter_code" target="enter_class">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="join_success" target="enter_class">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Decision: Vai trò trong lớp -->
+        <mxCell id="decision_class_role" value="Vai trò&lt;br&gt;trong lớp?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="660" y="840" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="edge23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="enter_class" target="decision_class_role">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- OWNER BRANCH -->
+        <!-- Quản lý lớp học -->
+        <mxCell id="owner_manage" value="Quản lý lớp học" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="400" y="860" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge24" value="Owner" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="decision_class_role" target="owner_manage">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Decision: Chọn chức năng -->
+        <mxCell id="decision_owner_func" value="Chọn&lt;br&gt;chức năng?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="400" y="940" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="edge25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="owner_manage" target="decision_owner_func">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Upload Lecture -->
+        <mxCell id="upload_lecture" value="Upload tài liệu&lt;br&gt;Lưu vào database" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1060" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="edge26" value="Upload&lt;br&gt;Lecture" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="decision_owner_func" target="upload_lecture">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- End Upload -->
+        <mxCell id="end_upload" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="110" y="1150" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="upload_lecture" target="end_upload">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Create Assignment -->
+        <mxCell id="create_assignment" value="Tạo bài tập&lt;br&gt;Lưu bài tập" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="230" y="1060" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="edge28" value="Create&lt;br&gt;Assignment" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="decision_owner_func" target="create_assignment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- End Assignment -->
+        <mxCell id="end_assignment" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="280" y="1150" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="create_assignment" target="end_assignment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Generate Quiz AI -->
+        <mxCell id="generate_quiz" value="Gọi API tạo quiz&lt;br&gt;Lưu câu hỏi" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="400" y="1060" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="edge30" value="Generate&lt;br&gt;Quiz AI" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="decision_owner_func" target="generate_quiz">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- End Quiz -->
+        <mxCell id="end_quiz" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="450" y="1150" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge31" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="generate_quiz" target="end_quiz">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Export Grades -->
+        <mxCell id="export_grades" value="Export Grades" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="570" y="1060" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge32" value="Xuất điểm" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="decision_owner_func" target="export_grades">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- End Export -->
+        <mxCell id="end_export" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="620" y="1150" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="export_grades" target="end_export">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- MEMBER BRANCH -->
+        <!-- Xem nội dung lớp -->
+        <mxCell id="member_view" value="Xem nội dung lớp" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="890" y="860" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge34" value="Member" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="decision_class_role" target="member_view">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Decision: Chọn hoạt động -->
+        <mxCell id="decision_member_activity" value="Chọn&lt;br&gt;hoạt động?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="890" y="940" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="edge35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="member_view" target="decision_member_activity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Xem Lecture -->
+        <mxCell id="view_lecture" value="Đọc tài liệu" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="750" y="1060" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge36" value="Xem&lt;br&gt;Lecture" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="decision_member_activity" target="view_lecture">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- End View Lecture -->
+        <mxCell id="end_view" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="780" y="1150" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="view_lecture" target="end_view">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Làm bài tập -->
+        <mxCell id="do_assignment" value="Xem danh sách&lt;br&gt;bài tập" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="900" y="1060" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="edge38" value="Làm&lt;br&gt;bài tập" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="decision_member_activity" target="do_assignment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Chọn bài tập -->
+        <mxCell id="select_assignment" value="Chọn bài tập" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="900" y="1150" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge39" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="do_assignment" target="select_assignment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Decision: Loại bài tập -->
+        <mxCell id="decision_assignment_type" value="Loại&lt;br&gt;bài tập?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="890" y="1230" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="edge40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="select_assignment" target="decision_assignment_type">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- QUIZ FLOW -->
+        <!-- Receive Question -->
+        <mxCell id="quiz_receive" value="Receive Question" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="720" y="1360" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge41" value="Quiz" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="decision_assignment_type" target="quiz_receive">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Select Answer -->
+        <mxCell id="quiz_answer" value="Select Answer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="720" y="1440" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge42" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="quiz_receive" target="quiz_answer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Submit Answer -->
+        <mxCell id="quiz_submit" value="Submit Answer&lt;br&gt;Update Score" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="720" y="1520" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="edge43" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="quiz_answer" target="quiz_submit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Decision: More Questions -->
+        <mxCell id="decision_more_questions" value="More&lt;br&gt;Questions?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="600" y="1490" width="90" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="edge44" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="quiz_submit" target="decision_more_questions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Loop back -->
+        <mxCell id="edge45" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="decision_more_questions" target="quiz_receive">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="580" y="1530" />
+              <mxPoint x="580" y="1380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Show Result Quiz -->
+        <mxCell id="quiz_result" value="Show Result" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="480" y="1510" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge46" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="decision_more_questions" target="quiz_result">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- End Quiz -->
+        <mxCell id="end_quiz_result" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="505" y="1580" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge47" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="quiz_result" target="end_quiz_result">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- UPLOAD FILE FLOW -->
+        <!-- Upload PDF -->
+        <mxCell id="upload_pdf" value="Upload PDF" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="1360" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge48" value="Upload&lt;br&gt;File" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="decision_assignment_type" target="upload_pdf">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- AI Parse PDF -->
+        <mxCell id="ai_parse" value="AI Parse PDF" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="1440" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge49" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="upload_pdf" target="ai_parse">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- So sánh đáp án -->
+        <mxCell id="compare_answer" value="So sánh đáp án&lt;br&gt;Chấm điểm tự động" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1025" y="1520" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="edge50" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ai_parse" target="compare_answer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Show Result Upload -->
+        <mxCell id="upload_result" value="Show Result" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1045" y="1600" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge51" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="compare_answer" target="upload_result">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- End Upload -->
+        <mxCell id="end_upload_result" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="1670" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge52" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="upload_result" target="end_upload_result">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

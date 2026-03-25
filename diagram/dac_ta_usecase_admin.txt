@@ -1,0 +1,441 @@
+BANG DAC TA USE CASE ADMIN - HE THONG E-LEARNING
+
+Mau cau truc (giong hinh mau):
+- Use case
+- Tac nhan
+- Mo ta
+- Luong su kien chinh
+
+=================================================================
+BANG 1. DAC TA USE CASE DANG NHAP
+Use case: Dang nhap
+Tac nhan: Quan tri vien (Admin)
+Mo ta:
+Use case nay cho phep Admin dang nhap vao he thong de truy cap cac chuc nang quan tri.
+He thong kiem tra thong tin tai khoan va phan quyen truoc khi cho phep su dung.
+Luong su kien chinh:
+1. Admin mo trang dang nhap.
+2. Admin nhap ten dang nhap va mat khau.
+3. He thong kiem tra thong tin tai khoan trong CSDL.
+4. He thong xac nhan quyen Admin.
+5. He thong chuyen den trang admin_dashboard va ket thuc use case.
+
+=================================================================
+BANG 2. DAC TA USE CASE DOI MAT KHAU
+Use case: Doi mat khau
+Tac nhan: Quan tri vien (Admin)
+Mo ta:
+Use case nay cho phep Admin thay doi mat khau de tang bao mat tai khoan.
+He thong chi cap nhat khi mat khau hien tai hop le va mat khau moi dat yeu cau.
+Luong su kien chinh:
+1. Admin chon chuc nang doi mat khau.
+2. He thong hien thi form doi mat khau.
+3. Admin nhap mat khau cu, mat khau moi va xac nhan mat khau moi.
+4. He thong kiem tra tinh hop le du lieu.
+5. He thong cap nhat mat khau va thong bao thanh cong.
+
+=================================================================
+BANG 3. DAC TA USE CASE DANG XUAT
+Use case: Dang xuat
+Tac nhan: Quan tri vien (Admin)
+Mo ta:
+Use case nay cho phep Admin ket thuc phien lam viec an toan.
+He thong huy session hien tai va chuyen ve trang dang nhap.
+Luong su kien chinh:
+1. Admin nhan nut Dang xuat.
+2. He thong ghi nhan yeu cau dang xuat.
+3. He thong huy session dang nhap.
+4. He thong dieu huong ve trang dang nhap.
+5. Use case ket thuc.
+
+=================================================================
+BANG 4. DAC TA USE CASE TAO LOP HOC MOI
+Use case: Tao lop hoc moi
+Tac nhan: Quan tri vien (Admin)
+Mo ta:
+Use case nay cho phep Admin tao mot lop hoc moi trong he thong.
+He thong luu thong tin lop hoc va gan Admin la nguoi quan ly.
+Luong su kien chinh:
+1. Admin vao chuc nang tao lop hoc.
+2. He thong hien thi form tao lop.
+3. Admin nhap thong tin lop (ten lop, mo ta, ma lop, ...).
+4. He thong kiem tra du lieu bat buoc va tinh duy nhat cua ma lop.
+5. He thong tao lop hoc moi trong CSDL va thong bao thanh cong.
+
+=================================================================
+BANG 5. DAC TA USE CASE CHINH SUA LOP HOC
+Use case: Chinh sua lop hoc
+Tac nhan: Quan tri vien (Admin)
+Mo ta:
+Use case nay cho phep Admin cap nhat thong tin mot lop hoc da ton tai.
+He thong luu thay doi va cap nhat du lieu hien thi cho hoc vien.
+Luong su kien chinh:
+1. Admin mo danh sach lop hoc.
+2. Admin chon mot lop can chinh sua.
+3. He thong hien thi thong tin lop hien tai.
+4. Admin cap nhat cac truong thong tin can thiet.
+5. He thong luu thay doi va thong bao thanh cong.
+
+=================================================================
+BANG 6. DAC TA USE CASE XOA LOP HOC
+Use case: Xoa lop hoc
+Tac nhan: Quan tri vien (Admin)
+Mo ta:
+Use case nay cho phep Admin xoa mot lop hoc khong con su dung.
+He thong yeu cau xac nhan truoc khi xoa de tranh mat du lieu ngoai y muon.
+Luong su kien chinh:
+1. Admin vao trang quan ly lop hoc.
+2. Admin chon lop hoc can xoa.
+3. He thong hien thi canh bao xac nhan xoa.
+4. Admin xac nhan thuc hien xoa.
+5. He thong xoa du lieu lien quan theo quy tac va thong bao ket qua.
+
+=================================================================
+BANG 7. DAC TA USE CASE XEM/QUAN LY LOP HOC
+Use case: Xem/Quan ly lop hoc
+Tac nhan: Quan tri vien (Admin)
+Mo ta:
+Use case nay cho phep Admin xem danh sach, tra cuu va thao tac tren cac lop hoc.
+Use case la diem bat dau cho cac nghiep vu tao/sua/xoa/luu tru lop.
+Luong su kien chinh:
+1. Admin mo trang quan ly lop hoc.
+2. He thong tai danh sach lop hoc cua Admin.
+3. Admin loc, tim kiem hoac chon mot lop cu the.
+4. He thong hien thi chi tiet lop hoc va cac thao tac kha dung.
+5. Admin tiep tuc voi use case con (sua, xoa, luu tru...) hoac ket thuc.
+
+=================================================================
+BANG 8. DAC TA USE CASE LUU TRU LOP HOC
+Use case: Luu tru lop hoc
+Tac nhan: Quan tri vien (Admin)
+Mo ta:
+Use case nay cho phep Admin chuyen lop hoc sang trang thai luu tru.
+Lop hoc luu tru khong con hoat dong nhung van giu du lieu de tra cuu.
+Luong su kien chinh:
+1. Admin chon mot lop hoc trong danh sach quan ly.
+2. Admin chon chuc nang Luu tru.
+3. He thong hien thi thong bao xac nhan.
+4. Admin xac nhan luu tru lop hoc.
+5. He thong cap nhat trang thai lop hoc sang luu tru va thong bao thanh cong.
+
+=================================================================
+BANG 9. DAC TA USE CASE TAI LEN BAI GIANG
+Use case: Tai len bai giang
+Tac nhan: Quan tri vien (Admin)
+Mo ta:
+Use case nay cho phep Admin dang tai tai lieu bai giang cho lop hoc.
+He thong luu file va thong tin bai giang de hoc vien truy cap.
+Luong su kien chinh:
+1. Admin vao chuc nang quan ly bai giang cua lop.
+2. Admin chon Tai len bai giang.
+3. Admin nhap tieu de, mo ta va chon tep tai len.
+4. He thong kiem tra dinh dang/duong dan tep.
+5. He thong luu bai giang va thong bao thanh cong.
+
+=================================================================
+BANG 10. DAC TA USE CASE CHINH SUA BAI GIANG
+Use case: Chinh sua bai giang
+Tac nhan: Quan tri vien (Admin)
+Mo ta:
+Use case nay cho phep Admin cap nhat noi dung metadata cua bai giang da co.
+Admin co the thay doi tieu de, mo ta hoac thay file bai giang.
+Luong su kien chinh:
+1. Admin mo danh sach bai giang.
+2. Admin chon bai giang can chinh sua.
+3. He thong hien thi thong tin hien tai.
+4. Admin cap nhat thong tin va xac nhan.
+5. He thong luu thay doi va thong bao thanh cong.
+
+=================================================================
+BANG 11. DAC TA USE CASE XOA BAI GIANG
+Use case: Xoa bai giang
+Tac nhan: Quan tri vien (Admin)
+Mo ta:
+Use case nay cho phep Admin xoa bai giang khong con su dung.
+He thong dam bao xac nhan thao tac truoc khi xoa.
+Luong su kien chinh:
+1. Admin vao danh sach bai giang cua lop.
+2. Admin chon bai giang can xoa.
+3. He thong hien thi hop thoai xac nhan.
+4. Admin xac nhan thao tac xoa.
+5. He thong xoa bai giang va cap nhat danh sach.
+
+=================================================================
+BANG 12. DAC TA USE CASE QUAN LY BAI GIANG
+Use case: Quan ly bai giang
+Tac nhan: Quan tri vien (Admin)
+Mo ta:
+Use case nay cho phep Admin xem tong quan tat ca bai giang trong lop.
+Use case lam dau moi cho cac thao tac tai len, chinh sua va xoa bai giang.
+Luong su kien chinh:
+1. Admin mo trang Quan ly bai giang.
+2. He thong hien thi danh sach bai giang theo lop.
+3. Admin tim kiem hoac loc bai giang can thao tac.
+4. Admin chon hanh dong (tai len/chinh sua/xoa).
+5. He thong xu ly hanh dong duoc chon va cap nhat giao dien.
+
+=================================================================
+BANG 13. DAC TA USE CASE TAO BAI TAP
+Use case: Tao bai tap
+Tac nhan: Quan tri vien (Admin)
+Mo ta:
+Use case nay cho phep Admin tao bai tap cho hoc vien trong lop.
+He thong luu de bai, han nop va tuy chon nop bai.
+Luong su kien chinh:
+1. Admin chon chuc nang Tao bai tap.
+2. He thong hien thi form tao bai tap.
+3. Admin nhap tieu de, noi dung, han nop va cac tuy chon.
+4. He thong kiem tra du lieu dau vao.
+5. He thong tao bai tap va thong bao thanh cong.
+
+=================================================================
+BANG 14. DAC TA USE CASE TAO CAU HOI QUIZ
+Use case: Tao cau hoi quiz
+Tac nhan: Quan tri vien (Admin)
+Mo ta:
+Use case nay cho phep Admin tao bo cau hoi quiz cho bai tap hoac bai kiem tra.
+Use case nay INCLUDE use case Tao bai tap de gan quiz vao bai tap.
+Luong su kien chinh:
+1. Admin vao chuc nang Tao cau hoi quiz.
+2. He thong yeu cau chon/tao bai tap de gan quiz.
+3. Admin nhap cau hoi, dap an va dap an dung.
+4. He thong kiem tra cau truc quiz va du lieu bat buoc.
+5. He thong luu bo quiz va lien ket voi bai tap.
+6. He thong thong bao tao quiz thanh cong.
+
+=================================================================
+BANG 15. DAC TA USE CASE TAO QUIZ BANG AI
+Use case: Tao quiz bang AI
+Tac nhan: Quan tri vien (Admin), AI Quiz Generator
+Mo ta:
+Use case nay cho phep Admin su dung AI de tao nhanh cau hoi quiz.
+Use case nay EXTEND use case Tao cau hoi quiz.
+Luong su kien chinh:
+1. Admin chon chuc nang Tao quiz bang AI.
+2. He thong yeu cau nhap noi dung nguon (bai giang/chu de/so cau hoi).
+3. Admin gui yeu cau tao quiz.
+4. AI Quiz Generator sinh bo cau hoi va tra ket qua.
+5. He thong hien thi de Admin xem lai/chinh sua.
+6. Admin xac nhan luu quiz vao he thong.
+
+=================================================================
+BANG 16. DAC TA USE CASE CHINH SUA BAI TAP
+Use case: Chinh sua bai tap
+Tac nhan: Quan tri vien (Admin)
+Mo ta:
+Use case nay cho phep Admin cap nhat thong tin bai tap da tao.
+He thong ghi nhan thay doi va dong bo thong tin cho hoc vien.
+Luong su kien chinh:
+1. Admin mo danh sach bai tap.
+2. Admin chon bai tap can chinh sua.
+3. He thong hien thi thong tin bai tap hien tai.
+4. Admin cap nhat noi dung/han nop va xac nhan.
+5. He thong luu thay doi va thong bao thanh cong.
+
+=================================================================
+BANG 17. DAC TA USE CASE XOA BAI TAP
+Use case: Xoa bai tap
+Tac nhan: Quan tri vien (Admin)
+Mo ta:
+Use case nay cho phep Admin xoa bai tap khi khong con nhu cau su dung.
+He thong canh bao anh huong den bai nop va diem so truoc khi xoa.
+Luong su kien chinh:
+1. Admin vao danh sach bai tap.
+2. Admin chon bai tap can xoa.
+3. He thong hien thi thong bao xac nhan xoa.
+4. Admin xac nhan thao tac.
+5. He thong xoa bai tap theo quy tac nghiep vu va thong bao ket qua.
+
+=================================================================
+BANG 18. DAC TA USE CASE XEM YEU CAU THAM GIA
+Use case: Xem yeu cau tham gia
+Tac nhan: Quan tri vien (Admin)
+Mo ta:
+Use case nay cho phep Admin xem danh sach yeu cau tham gia lop tu hoc vien.
+Danh sach nay la co so de thuc hien duyet hoac tu choi yeu cau.
+Luong su kien chinh:
+1. Admin mo trang quan ly yeu cau tham gia.
+2. He thong tai danh sach yeu cau dang cho xu ly.
+3. Admin xem thong tin nguoi gui va lop hoc lien quan.
+4. Admin chon yeu cau cu the.
+5. Admin tiep tuc voi use case Duyet/Tu choi yeu cau.
+
+=================================================================
+BANG 19. DAC TA USE CASE DUYET YEU CAU
+Use case: Duyet yeu cau
+Tac nhan: Quan tri vien (Admin)
+Mo ta:
+Use case nay cho phep Admin chap nhan yeu cau tham gia lop hoc.
+Use case nay INCLUDE use case Xem yeu cau tham gia.
+Luong su kien chinh:
+1. Admin mo danh sach yeu cau tham gia.
+2. Admin chon mot yeu cau hop le.
+3. Admin nhan Duyet.
+4. He thong cap nhat trang thai yeu cau la Da duyet.
+5. He thong them hoc vien vao lop va gui thong bao.
+
+=================================================================
+BANG 20. DAC TA USE CASE TU CHOI YEU CAU
+Use case: Tu choi yeu cau
+Tac nhan: Quan tri vien (Admin)
+Mo ta:
+Use case nay cho phep Admin tu choi yeu cau tham gia lop hoc.
+Use case nay INCLUDE use case Xem yeu cau tham gia.
+Luong su kien chinh:
+1. Admin mo danh sach yeu cau tham gia.
+2. Admin chon yeu cau can tu choi.
+3. Admin nhan Tu choi.
+4. He thong cap nhat trang thai yeu cau la Tu choi.
+5. He thong gui thong bao ket qua cho nguoi gui yeu cau.
+
+=================================================================
+BANG 21. DAC TA USE CASE XOA THANH VIEN KHOI LOP
+Use case: Xoa thanh vien khoi lop
+Tac nhan: Quan tri vien (Admin)
+Mo ta:
+Use case nay cho phep Admin loai bo hoc vien khoi lop hoc.
+He thong cap nhat danh sach thanh vien va quyen truy cap noi dung lop.
+Luong su kien chinh:
+1. Admin mo danh sach thanh vien cua lop.
+2. Admin chon thanh vien can xoa.
+3. He thong hien thi canh bao xac nhan.
+4. Admin xac nhan xoa thanh vien.
+5. He thong xoa thanh vien khoi lop va thong bao ket qua.
+
+=================================================================
+BANG 22. DAC TA USE CASE XEM BAI NOP CUA HOC VIEN
+Use case: Xem bai nop cua hoc vien
+Tac nhan: Quan tri vien (Admin), AI Grading System
+Mo ta:
+Use case nay cho phep Admin xem bai nop cua hoc vien de cham diem.
+He thong co the su dung AI Grading System de ho tro cham diem tu dong.
+Luong su kien chinh:
+1. Admin mo bai tap can cham.
+2. He thong hien thi danh sach bai nop cua hoc vien.
+3. Admin chon mot bai nop de xem chi tiet.
+4. He thong hien thi noi dung/tep bai nop.
+5. AI Grading System (neu co) tra ve goi y diem.
+6. Admin xac nhan diem hoac dieu chinh ket qua cham.
+
+=================================================================
+BANG 23. DAC TA USE CASE XEM DIEM SO
+Use case: Xem diem so
+Tac nhan: Quan tri vien (Admin)
+Mo ta:
+Use case nay cho phep Admin xem bang diem tong hop cua lop.
+He thong hien thi diem theo hoc vien, bai tap va quiz.
+Luong su kien chinh:
+1. Admin vao chuc nang Xem diem so.
+2. He thong tai du lieu diem cua lop hoc.
+3. Admin loc diem theo bai tap/hoc vien/thoi gian.
+4. He thong hien thi bang diem chi tiet.
+5. Admin ket thuc hoac tiep tuc voi use case Xuat diem.
+
+=================================================================
+BANG 24. DAC TA USE CASE XUAT DIEM (EXCEL)
+Use case: Xuat diem (Excel)
+Tac nhan: Quan tri vien (Admin)
+Mo ta:
+Use case nay cho phep Admin xuat du lieu diem ra tep Excel.
+Use case nay EXTEND use case Xem diem so.
+Luong su kien chinh:
+1. Admin dang o trang xem diem.
+2. Admin nhan nut Xuat diem (Excel).
+3. He thong tao tep du lieu theo bo loc hien tai.
+4. He thong tra ve tep cho Admin tai xuong.
+5. Use case ket thuc.
+
+=================================================================
+BANG 25. DAC TA USE CASE XEM THONG KE LOP HOC
+Use case: Xem thong ke lop hoc
+Tac nhan: Quan tri vien (Admin)
+Mo ta:
+Use case nay cho phep Admin theo doi cac chi so hoc tap va tuong tac trong lop.
+He thong tong hop so lieu ve thanh vien, bai nop, diem trung binh va tien do.
+Luong su kien chinh:
+1. Admin mo chuc nang thong ke lop hoc.
+2. He thong truy xuat du lieu thong ke lien quan.
+3. He thong hien thi bieu do/so lieu tong hop.
+4. Admin loc theo thoi gian hoac tieu chi mong muon.
+5. He thong cap nhat ket qua thong ke theo bo loc.
+
+=================================================================
+BANG 26. DAC TA USE CASE XEM BAO CAO VI PHAM
+Use case: Xem bao cao vi pham
+Tac nhan: Quan tri vien (Admin)
+Mo ta:
+Use case nay cho phep Admin xem danh sach bao cao vi pham noi dung/nguoi dung.
+Danh sach nay duoc su dung de tiep tuc xu ly bao cao.
+Luong su kien chinh:
+1. Admin mo trang Bao cao vi pham.
+2. He thong hien thi danh sach bao cao cho xu ly.
+3. Admin xem chi tiet tung bao cao.
+4. Admin danh dau muc can xu ly.
+5. Admin tiep tuc voi use case Xu ly bao cao.
+
+=================================================================
+BANG 27. DAC TA USE CASE XU LY BAO CAO
+Use case: Xu ly bao cao
+Tac nhan: Quan tri vien (Admin)
+Mo ta:
+Use case nay cho phep Admin dua ra quyet dinh xu ly mot bao cao vi pham.
+Use case nay INCLUDE use case Xem bao cao vi pham.
+Luong su kien chinh:
+1. Admin chon mot bao cao tu danh sach.
+2. He thong hien thi day du noi dung bang chung.
+3. Admin danh gia muc do vi pham.
+4. Admin chon huong xu ly phu hop.
+5. He thong luu ket qua xu ly va cap nhat trang thai bao cao.
+
+=================================================================
+BANG 28. DAC TA USE CASE CAM NGUOI DUNG
+Use case: Cam nguoi dung
+Tac nhan: Quan tri vien (Admin)
+Mo ta:
+Use case nay cho phep Admin khoa/cam mot tai khoan vi pham quy dinh.
+Use case nay EXTEND use case Xu ly bao cao.
+Luong su kien chinh:
+1. Admin dang xu ly mot bao cao vi pham.
+2. Admin chon hanh dong Cam nguoi dung.
+3. He thong yeu cau xac nhan va ly do cam.
+4. Admin xac nhan quyet dinh.
+5. He thong khoa tai khoan va ghi nhat ky xu ly.
+
+=================================================================
+BANG 29. DAC TA USE CASE XOA NOI DUNG VI PHAM
+Use case: Xoa noi dung vi pham
+Tac nhan: Quan tri vien (Admin)
+Mo ta:
+Use case nay cho phep Admin xoa noi dung vi pham khoi he thong.
+Use case nay EXTEND use case Xu ly bao cao.
+Luong su kien chinh:
+1. Admin dang xu ly mot bao cao vi pham.
+2. Admin chon hanh dong Xoa noi dung vi pham.
+3. He thong hien thi thong tin noi dung va canh bao anh huong.
+4. Admin xac nhan thao tac xoa.
+5. He thong xoa noi dung, cap nhat trang thai bao cao va ghi nhat ky.
+
+=================================================================
+BANG 30. DAC TA USE CASE XEM DASHBOARD QUAN TRI
+Use case: Xem Dashboard quan tri
+Tac nhan: Quan tri vien (Admin)
+Mo ta:
+Use case nay cho phep Admin theo doi tong quan hoat dong he thong tai mot man hinh.
+Dashboard hien thi cac chi so nhanh ve lop hoc, thanh vien, bai tap va bao cao.
+Luong su kien chinh:
+1. Admin dang nhap thanh cong vao he thong.
+2. Admin mo trang Dashboard quan tri.
+3. He thong tai du lieu tong quan moi nhat.
+4. He thong hien thi cac the thong ke va canh bao quan trong.
+5. Admin chon cac muc chi tiet de dieu huong sang cac chuc nang khac.
+
+=================================================================
+GHI CHU VE QUAN HE GIUA CAC USE CASE
+1. Tao cau hoi quiz <<include>> Tao bai tap.
+2. Tao quiz bang AI <<extend>> Tao cau hoi quiz.
+3. Duyet yeu cau <<include>> Xem yeu cau tham gia.
+4. Tu choi yeu cau <<include>> Xem yeu cau tham gia.
+5. Xuat diem (Excel) <<extend>> Xem diem so.
+6. Xu ly bao cao <<include>> Xem bao cao vi pham.
+7. Cam nguoi dung <<extend>> Xu ly bao cao.
+8. Xoa noi dung vi pham <<extend>> Xu ly bao cao.

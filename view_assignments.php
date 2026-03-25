@@ -20,10 +20,11 @@ if (!$class_data) {
     die("Lớp học không tồn tại!");
 }
 
-// Kiểm tra quyền truy cập
+// Kiểm tra quyền truy cập (phải là admin, owner hoặc member)
+$is_admin = (isset($_SESSION['role']) && $_SESSION['role'] == 'admin');
 $is_owner = ($class_data['owner_id'] == $current_user_id);
 $is_member = false;
-if (!$is_owner) {
+if (!$is_owner && !$is_admin) {
     $sql_member = "SELECT id FROM class_members WHERE user_id = '$current_user_id' AND class_id = '$class_id'";
     $res_member = mysqli_query($conn, $sql_member);
     if (mysqli_num_rows($res_member) > 0) {
@@ -31,7 +32,8 @@ if (!$is_owner) {
     }
 }
 
-if (!$is_owner && !$is_member) {
+// Admin có quyền truy cập tất cả các lớp học
+if (!$is_admin && !$is_owner && !$is_member) {
     die("Bạn không có quyền truy cập lớp học này!");
 }
 
@@ -46,99 +48,10 @@ $result_assignments = mysqli_query($conn, $sql_assignments);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bài tập - <?php echo htmlspecialchars($class_data['class_name']); ?></title>
-    <link rel="stylesheet" href="user_style.css">
+    <link rel="stylesheet" href="user_style.css?v=<?php echo filemtime('user_style.css'); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .assignment-item {
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: 0.3s;
-        }
-        .assignment-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-        }
-        .assignment-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        .assignment-title {
-            font-size: 22px;
-            font-weight: bold;
-            color: #333;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .assignment-status {
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-        .status-pending {
-            background: #fff3cd;
-            color: #856404;
-        }
-        .status-completed {
-            background: #d4edda;
-            color: #155724;
-        }
-        .assignment-info {
-            color: #777;
-            font-size: 14px;
-            margin: 8px 0;
-        }
-        .assignment-actions {
-            margin-top: 20px;
-            display: flex;
-            gap: 10px;
-        }
-        .btn-do, .btn-report {
-            padding: 10px 25px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: 0.3s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .btn-do {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-            color: white;
-        }
-        .btn-do:hover {
-            background: linear-gradient(135deg, #0e8073 0%, #2dd168 100%);
-        }
-        .btn-report {
-            background: #dc3545;
-            color: white;
-        }
-        .btn-report:hover {
-            background: #c82333;
-        }
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            background: white;
-            border-radius: 10px;
-        }
-        .empty-state i {
-            font-size: 60px;
-            color: #ddd;
-            margin-bottom: 20px;
-        }
-    </style>
 </head>
-<body>
+<body class="view-assignments-page">
     <nav class="navbar">
         <div class="logo">
             <i class="fas fa-graduation-cap"></i> AI-Learning
@@ -169,6 +82,19 @@ $result_assignments = mysqli_query($conn, $sql_assignments);
                     <div class="assignment-header">
                         <div class="assignment-title">
                             <i class="fas fa-file-alt"></i> <?php echo htmlspecialchars($assignment['title']); ?>
+                            <?php if (isset($assignment['difficulty'])): ?>
+                                <?php 
+                                    $difficulty_badges = [
+                                        'easy' => ['label' => 'Dễ', 'color' => '#4ade80', 'icon' => '🟢'],
+                                        'medium' => ['label' => 'Vừa', 'color' => '#fbbf24', 'icon' => '🟡'],
+                                        'hard' => ['label' => 'Khó', 'color' => '#f87171', 'icon' => '🔴']
+                                    ];
+                                    $badge = $difficulty_badges[$assignment['difficulty']] ?? $difficulty_badges['medium'];
+                                ?>
+                                <span style="background: <?php echo $badge['color']; ?>; color: white; padding: 4px 12px; border-radius: 15px; font-size: 12px; font-weight: 600; margin-left: 10px;">
+                                    <?php echo $badge['icon'] . ' ' . $badge['label']; ?>
+                                </span>
+                            <?php endif; ?>
                         </div>
                         <span class="assignment-status <?php echo $has_submitted ? 'status-completed' : 'status-pending'; ?>">
                             <?php echo $has_submitted ? 'Đã làm' : 'Chưa làm'; ?>
@@ -185,6 +111,31 @@ $result_assignments = mysqli_query($conn, $sql_assignments);
                         <i class="fas fa-calendar-plus"></i> Ngày đăng: <?php echo date('d/m/Y H:i', strtotime($assignment['created_at'])); ?>
                     </div>
                     
+                    <?php if ($assignment['duration']): ?>
+                        <div class="assignment-info" style="color: #764ba2;">
+                            <i class="fas fa-clock"></i> Thời gian làm bài: <strong><?php echo $assignment['duration']; ?> phút</strong>
+                        </div>
+                    <?php endif; ?>
+                    
+                    <?php if ($assignment['deadline']): 
+                        $deadline_timestamp = strtotime($assignment['deadline']);
+                        $is_expired = (time() > $deadline_timestamp);
+                        $time_left = $deadline_timestamp - time();
+                        $hours_left = floor($time_left / 3600);
+                    ?>
+                        <div class="assignment-info" style="color: <?php echo $is_expired ? '#dc3545' : ($hours_left < 24 ? '#f5576c' : '#667eea'); ?>; font-weight: bold;">
+                            <i class="fas fa-calendar-times"></i> 
+                            <?php if ($is_expired): ?>
+                                Đã hết hạn nộp (<?php echo date('d/m/Y H:i', $deadline_timestamp); ?>)
+                            <?php else: ?>
+                                Hạn nộp: <?php echo date('d/m/Y H:i', $deadline_timestamp); ?>
+                                <?php if ($hours_left < 24): ?>
+                                    <span style="color: #f5576c;">(Còn <?php echo $hours_left; ?> giờ)</span>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
+                    
                     <?php if ($has_submitted && $submission['score'] !== null): ?>
                         <div class="assignment-info" style="color: #28a745; font-weight: bold;">
                             <i class="fas fa-check-circle"></i> Điểm: <?php echo $submission['score']; ?>/100
@@ -192,10 +143,10 @@ $result_assignments = mysqli_query($conn, $sql_assignments);
                     <?php endif; ?>
                     
                     <div class="assignment-actions">
-                        <a href="do_assignment.php?id=<?php echo $assignment['id']; ?>" class="btn-do">
+                        <a href="view_assignment_detail.php?id=<?php echo $assignment['id']; ?>" class="btn-do">
                             <i class="fas fa-pen"></i> <?php echo $has_submitted ? 'Xem lại bài làm' : 'Làm bài tập'; ?>
                         </a>
-                        <button class="btn-report" onclick="reportAssignment(<?php echo $assignment['id']; ?>)">
+                        <button class="btn-report js-report-assignment" data-assignment-id="<?php echo $assignment['id']; ?>" data-class-id="<?php echo $class_id; ?>">
                             <i class="fas fa-flag"></i> Report
                         </button>
                         <?php if ($is_owner): ?>
@@ -216,30 +167,6 @@ $result_assignments = mysqli_query($conn, $sql_assignments);
         <?php endif; ?>
     </div>
 
-    <script>
-        function reportAssignment(assignmentId) {
-            const reason = prompt("Nhập lý do báo cáo bài tập này:");
-            if (reason && reason.trim() !== '') {
-                fetch('report_process.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: `assignment_id=${assignmentId}&reason=${encodeURIComponent(reason)}&class_id=<?php echo $class_id; ?>`
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert('Báo cáo của bạn đã được gửi!');
-                    } else {
-                        alert('Lỗi: ' + data.message);
-                    }
-                })
-                .catch(error => {
-                    alert('Đã xảy ra lỗi khi gửi báo cáo!');
-                });
-            }
-        }
-    </script>
+    <script src="xu_ly.js?v=<?php echo filemtime('xu_ly.js'); ?>"></script>
 </body>
 </html>

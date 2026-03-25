@@ -27,8 +27,9 @@ if (!$lecture) {
     die("Tài liệu không tồn tại!");
 }
 
-// Kiểm tra xem người dùng có phải là chủ lớp học không
-if ($lecture['owner_id'] != $current_user_id) {
+// Kiểm tra xem người dùng có phải là admin hoặc chủ lớp học không
+$is_admin = (isset($_SESSION['role']) && $_SESSION['role'] == 'admin');
+if (!$is_admin && $lecture['owner_id'] != $current_user_id) {
     die("Bạn không có quyền xóa tài liệu này!");
 }
 

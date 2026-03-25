@@ -6,7 +6,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 18px 12px;
 }
 
 .container {
@@ -39,7 +40,7 @@ textarea {
     border: 1px solid #ddd;
     border-radius: 8px;
     box-sizing: border-box;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 input:focus, 
@@ -77,4 +78,30 @@ button:hover {
 
 .back-link:hover {
     color: #343a40;
+}
+
+@media (max-width: 640px) {
+    body {
+        align-items: flex-start;
+        padding: 12px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 20px 16px;
+        border-radius: 10px;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 15px;
+        padding: 11px;
+    }
 }

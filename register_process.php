@@ -5,13 +5,14 @@ include 'db_config.php';
 // Kiểm tra nếu form được submit
 if (isset($_POST['register'])) {
     // Lấy dữ liệu từ form
+    $full_name = trim(mysqli_real_escape_string($conn, $_POST['full_name']));
     $username = trim(mysqli_real_escape_string($conn, $_POST['username']));
     $email = trim(mysqli_real_escape_string($conn, $_POST['email']));
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
     
     // Kiểm tra dữ liệu hợp lệ
-    if (empty($username) || empty($email) || empty($password) || empty($confirm_password)) {
+    if (empty($full_name) || empty($username) || empty($email) || empty($password) || empty($confirm_password)) {
         header("Location: register.html?error=invalid_data");
         exit();
     }
@@ -50,8 +51,8 @@ if (isset($_POST['register'])) {
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     
     // Thêm user mới vào database
-    $sql = "INSERT INTO users (username, email, password, role, created_at) 
-            VALUES ('$username', '$email', '$hashed_password', 'user', NOW())";
+    $sql = "INSERT INTO users (username, email, password, full_name, role, created_at) 
+            VALUES ('$username', '$email', '$hashed_password', '$full_name', 'user', NOW())";
     
     if (mysqli_query($conn, $sql)) {
         // Đăng ký thành công, chuyển về trang login

@@ -7,35 +7,41 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-if (isset($_POST['btn_join'])) {
-    $invite_code = mysqli_real_escape_string($conn, strtoupper($_POST['invite_code']));
-    $user_id = $_SESSION['user_id'];
+$invite_code = mysqli_real_escape_string($conn, $_POST['invite_code']);
+$res = mysqli_query($conn, "SELECT id, type FROM classes WHERE invite_code = '$invite_code'");
+$class = mysqli_fetch_assoc($res);
 
-    // 1. Kiểm tra mã mời có tồn tại trong bảng classes không
-    $sql_check = "SELECT id, owner_id FROM classes WHERE invite_code = '$invite_code'";
-    $result = mysqli_query($conn, $sql_check);
+// Kiểm tra xem lớp học có tồn tại không
+if (!$class) {
+    echo "<script>
+        alert('❌ Không tìm thấy lớp học!\\n\\nMã lớp học không đúng. Vui lòng kiểm tra lại.');
+        window.location.href = 'join_class.html';
+    </script>";
+    exit();
+}
 
-    if (mysqli_num_rows($result) > 0) {
-        $class = mysqli_fetch_assoc($result);
-        $class_id = $class['id'];
+$user_id = $_SESSION['user_id'];
 
-        // 2. Kiểm tra nếu người dùng là chủ phòng thì không cần tham gia nữa
-        if ($class['owner_id'] == $user_id) {
-            echo "<script>alert('Bạn là chủ lớp này rồi!'); window.location='user_dashboard.php';</script>";
-            exit();
-        }
+// Kiểm tra xem đã là thành viên chưa
+$sql_check = "SELECT id FROM class_members WHERE class_id = {$class['id']} AND user_id = $user_id";
+$result_check = mysqli_query($conn, $sql_check);
+if (mysqli_num_rows($result_check) > 0) {
+    echo "<script>
+        alert('ℹ️ Bạn đã là thành viên của lớp học này rồi!');
+        window.location.href = 'manage_class.php?id={$class['id']}';
+    </script>";
+    exit();
+}
 
-        // 3. Thêm vào bảng class_members
-        $sql_join = "INSERT INTO class_members (user_id, class_id) VALUES ('$user_id', '$class_id')";
-        
-        if (mysqli_query($conn, $sql_join)) {
-            echo "<script>alert('Tham gia lớp học thành công!'); window.location='user_dashboard.php';</script>";
-        } else {
-            // Lỗi do đã tham gia rồi (Duplicate entry)
-            echo "<script>alert('Bạn đã tham gia lớp học này trước đó!'); window.location='user_dashboard.php';</script>";
-        }
-    } else {
-        echo "<script>alert('Mã mời không tồn tại!'); window.history.back();</script>";
-    }
+if ($class['type'] == 'public') {
+    // Nếu Public: Thêm thẳng vào bảng class_members
+    mysqli_query($conn, "INSERT INTO class_members (class_id, user_id) VALUES (".$class['id'].", $user_id)");
+    echo "<script>
+        alert('✅ Tham gia lớp học thành công!');
+        window.location.href = 'manage_class.php?id=".$class['id']."';
+    </script>";
+} else {
+    // Nếu Private: Chuyển sang trang điền thông tin yêu cầu
+    header("Location: request_join.php?class_id=".$class['id']);
 }
 ?>

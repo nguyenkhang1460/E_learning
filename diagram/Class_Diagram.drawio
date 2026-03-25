@@ -1,0 +1,98 @@
+<mxfile host="app.diagrams.net" modified="2026-03-22T10:30:00.000Z" agent="draw.io" version="24.7.17" type="device">
+  <diagram id="class-diagram-simple-bw" name="Class Diagram - Simple B/W">
+    <mxGraphModel dx="1800" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2600" pageHeight="1700" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="UML CLASS DIAGRAM - E LEARNING (SIMPLE)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=20;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="760" y="20" width="1050" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="NguoiDung" value="&lt;b&gt;NguoiDung&lt;/b&gt;&#xa;-----------------------------&#xa;- id: int&#xa;- username: string&#xa;- email: string&#xa;- matKhau: string&#xa;- hoTen: string&#xa;- role: string&#xa;-----------------------------&#xa;+ dangNhap(): bool&#xa;+ doiMatKhau(): bool" style="shape=umlClass;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="980" y="100" width="300" height="280" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="HocVien" value="&lt;b&gt;HocVien&lt;/b&gt;&#xa;-----------------------------&#xa;- trangThai: string&#xa;-----------------------------&#xa;+ thamGiaLop(): void&#xa;+ nopBai(): void" style="shape=umlClass;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="620" y="440" width="280" height="200" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="QuanTriVien" value="&lt;b&gt;QuanTriVien&lt;/b&gt;&#xa;-----------------------------&#xa;- capDo: string&#xa;-----------------------------&#xa;+ quanLyNguoiDung(): void&#xa;+ xemBaoCao(): void" style="shape=umlClass;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="440" width="300" height="200" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="LopHoc" value="&lt;b&gt;LopHoc&lt;/b&gt;&#xa;-----------------------------&#xa;- id: int&#xa;- tenLop: string&#xa;- moTa: text&#xa;- maMoi: string&#xa;- loaiLop: string&#xa;-----------------------------&#xa;+ taoLop(): LopHoc&#xa;+ xoaLop(): bool" style="shape=umlClass;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="140" y="760" width="300" height="280" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ThanhVienLop" value="&lt;b&gt;ThanhVienLop&lt;/b&gt;&#xa;-----------------------------&#xa;- classId: int&#xa;- userId: int&#xa;- ngayThamGia: datetime&#xa;-----------------------------&#xa;+ themThanhVien(): void&#xa;+ roiLop(): void" style="shape=umlClass;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="500" y="800" width="300" height="240" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="YeuCauThamGia" value="&lt;b&gt;YeuCauThamGia&lt;/b&gt;&#xa;-----------------------------&#xa;- id: int&#xa;- classId: int&#xa;- userId: int&#xa;- cauTraLoi: json&#xa;- trangThai: string&#xa;-----------------------------&#xa;+ guiYeuCau(): void&#xa;+ duyet(): void" style="shape=umlClass;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="860" y="790" width="320" height="260" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="BaiTap" value="&lt;b&gt;BaiTap&lt;/b&gt;&#xa;-----------------------------&#xa;- id: int&#xa;- classId: int&#xa;- tieuDe: string&#xa;- loai: string&#xa;- doKho: string&#xa;- hanNop: datetime&#xa;-----------------------------&#xa;+ taoBaiTap(): BaiTap&#xa;+ xoaBaiTap(): bool" style="shape=umlClass;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="760" width="300" height="280" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="CauHoiQuiz" value="&lt;b&gt;CauHoiQuiz&lt;/b&gt;&#xa;-----------------------------&#xa;- id: int&#xa;- assignmentId: int&#xa;- noiDung: text&#xa;- luaChon: json&#xa;- dapAnDung: int&#xa;-----------------------------&#xa;+ luuCauHoi(): void" style="shape=umlClass;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1610" y="790" width="300" height="250" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="BaiNop" value="&lt;b&gt;BaiNop&lt;/b&gt;&#xa;-----------------------------&#xa;- id: int&#xa;- assignmentId: int&#xa;- userId: int&#xa;- diem: float&#xa;- ngayNop: datetime&#xa;- viPham: int&#xa;-----------------------------&#xa;+ nopBaiQuiz(): BaiNop&#xa;+ nopBaiFile(): BaiNop" style="shape=umlClass;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1970" y="760" width="300" height="280" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="BaoCao" value="&lt;b&gt;BaoCao&lt;/b&gt;&#xa;-----------------------------&#xa;- id: int&#xa;- userId: int&#xa;- classId: int&#xa;- loaiBaoCao: string&#xa;- lyDo: text&#xa;- ngayTao: datetime&#xa;-----------------------------&#xa;+ taoBaoCao(): BaoCao&#xa;+ xemBaoCao(): list" style="shape=umlClass;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="980" y="1140" width="320" height="260" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e1" edge="1" parent="1" source="HocVien" target="NguoiDung" value="ke thua" style="endArrow=block;endFill=0;html=1;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="QuanTriVien" target="NguoiDung" value="ke thua" style="endArrow=block;endFill=0;html=1;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e3" edge="1" parent="1" source="NguoiDung" target="LopHoc" value="1 tao 0..*" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="LopHoc" target="ThanhVienLop" value="1 co 1..*" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="NguoiDung" target="ThanhVienLop" value="1 tham gia 0..*" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e6" edge="1" parent="1" source="LopHoc" target="YeuCauThamGia" value="1 co 0..*" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="NguoiDung" target="YeuCauThamGia" value="1 gui 0..*" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e8" edge="1" parent="1" source="LopHoc" target="BaiTap" value="1 co 0..*" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="BaiTap" target="CauHoiQuiz" value="1 gom 1..*" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="BaiTap" target="BaiNop" value="1 co 0..*" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="NguoiDung" target="BaiNop" value="1 nop 0..*" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e12" edge="1" parent="1" source="NguoiDung" target="BaoCao" value="1 tao 0..*" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e13" edge="1" parent="1" source="LopHoc" target="BaoCao" value="1 co 0..*" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

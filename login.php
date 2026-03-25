@@ -8,37 +8,8 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng nhập - Hệ thống học tập AI</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        .alert {
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            font-weight: bold;
-            animation: slideDown 0.3s ease-out;
-        }
-        .alert-error {
-            background-color: #ffebee;
-            color: #c62828;
-            border-left: 4px solid #e74c3c;
-        }
-        .alert-success {
-            background-color: #e8f5e9;
-            color: #2e7d32;
-            border-left: 4px solid #27ae60;
-        }
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
 </head>
-<body>
+<body class="login-page">
 
     <div class="login-box">
         <h2>Đăng Nhập</h2>
@@ -77,9 +48,6 @@ session_start();
         <p class="footer-text">Đồ án 2 - Trang web học tập tích hợp AI</p>
     </div>
 
-    <script>
-        // Auto focus vào ô username
-        document.getElementById('username').focus();
-    </script>
+    <script src="xu_ly.js"></script>
 </body>
 </html>

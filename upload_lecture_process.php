@@ -2,6 +2,15 @@
 session_start();
 include 'db_config.php';
 
+$api_config_file = __DIR__ . '/config/api_keys.php';
+if (!file_exists($api_config_file)) {
+    echo "<script>alert('Thiếu file cấu hình API. Vui lòng tạo config/api_keys.php từ file mẫu.'); window.history.back();</script>";
+    exit();
+}
+
+$api_config = require $api_config_file;
+$cloudinary = $api_config['cloudinary'] ?? [];
+
 if (isset($_POST['btn_upload'])) {
     $class_id = $_POST['class_id'];
     $title = mysqli_real_escape_string($conn, $_POST['title']);
@@ -16,10 +25,14 @@ if (isset($_POST['btn_upload'])) {
         exit();
     }
 
-    // Thông tin Cloudinary của bạn
-    $cloud_name = "dwvsbcegm"; 
-    $api_key = "833377455192851"; 
-    $upload_preset = "do_an_ai"; // Đảm bảo bạn đã tạo cái này trên Cloudinary
+    // Thông tin Cloudinary lấy từ cấu hình local
+    $cloud_name = $cloudinary['cloud_name'] ?? '';
+    $upload_preset = $cloudinary['upload_preset'] ?? '';
+
+    if (empty($cloud_name) || empty($upload_preset)) {
+        echo "<script>alert('Thiếu cấu hình Cloudinary trong config/api_keys.php'); window.history.back();</script>";
+        exit();
+    }
 
     $file_tmp = $_FILES['lecture_file']['tmp_name'];
     $url = "https://api.cloudinary.com/v1_1/$cloud_name/auto/upload";

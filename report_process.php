@@ -29,6 +29,9 @@ if (isset($_POST['lecture_id'])) {
 } elseif (isset($_POST['assignment_id'])) {
     $report_type = 'assignment';
     $target_id = mysqli_real_escape_string($conn, $_POST['assignment_id']);
+} elseif (isset($_POST['report_class']) && $_POST['report_class'] == 'true') {
+    $report_type = 'class';
+    $target_id = $class_id;
 } else {
     echo json_encode(['success' => false, 'message' => 'Thiếu thông tin báo cáo']);
     exit();

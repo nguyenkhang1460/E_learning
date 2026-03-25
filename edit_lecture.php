@@ -41,9 +41,13 @@ if (isset($_POST['btn_update'])) {
                    WHERE id = '$lecture_id'";
     
     if (mysqli_query($conn, $sql_update)) {
-        echo "<script>alert('Cập nhật thành công!'); window.location='manage_lectures.php?id=$class_id';</script>";
+        $_SESSION['success'] = 'Cập nhật bài giảng thành công!';
+        header("Location: manage_lectures.php?id=$class_id");
+        exit();
     } else {
-        echo "<script>alert('Lỗi: " . mysqli_error($conn) . "');</script>";
+        $_SESSION['error'] = 'Lỗi khi cập nhật: ' . mysqli_error($conn);
+        header("Location: edit_lecture.php?id=$lecture_id&class_id=$class_id");
+        exit();
     }
 }
 ?>
@@ -54,64 +58,9 @@ if (isset($_POST['btn_update'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chỉnh sửa bài giảng</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="user_style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .edit-form {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #333;
-        }
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
-            font-family: inherit;
-        }
-        .form-group textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-        .btn-submit {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            width: 100%;
-            font-size: 16px;
-        }
-        .btn-submit:hover {
-            background: linear-gradient(135deg, #5568d3 0%, #6a3f8f 100%);
-        }
-        .btn-cancel {
-            display: block;
-            text-align: center;
-            margin-top: 15px;
-            color: #666;
-            text-decoration: none;
-        }
-        .btn-cancel:hover {
-            color: #333;
-        }
-    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -119,7 +68,7 @@ if (isset($_POST['btn_update'])) {
             <i class="fas fa-graduation-cap"></i> AI-Learning
         </div>
         <div class="nav-links">
-            <a href="manage_lectures.php?id=<?php echo $class_id; ?>" style="text-decoration: none; color: #666;">
+            <a href="manage_lectures.php?id=<?php echo $class_id; ?>" class="edit-lecture-back-link">
                 <i class="fas fa-arrow-left"></i> Quay lại danh sách
             </a>
         </div>
@@ -129,6 +78,12 @@ if (isset($_POST['btn_update'])) {
         <div class="welcome-section">
             <h1><i class="fas fa-edit"></i> Chỉnh sửa bài giảng</h1>
         </div>
+
+        <?php if (isset($_SESSION['error'])): ?>
+            <div class="edit-lecture-alert edit-lecture-alert-error">
+                <i class="fas fa-exclamation-circle"></i> <?php echo $_SESSION['error']; unset($_SESSION['error']); ?>
+            </div>
+        <?php endif; ?>
 
         <div class="edit-form">
             <form method="POST">
@@ -145,7 +100,7 @@ if (isset($_POST['btn_update'])) {
                 <div class="form-group">
                     <label><i class="fas fa-link"></i> URL file:</label>
                     <input type="url" name="file_url" value="<?php echo htmlspecialchars($lecture['file_url']); ?>" required>
-                    <small style="color: #999;">Link file trên Cloudinary hoặc dịch vụ lưu trữ khác</small>
+                    <small class="field-help-text">Link file trên Cloudinary hoặc dịch vụ lưu trữ khác</small>
                 </div>
 
                 <button type="submit" name="btn_update" class="btn-submit">

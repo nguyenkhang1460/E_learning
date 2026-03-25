@@ -8,6 +8,13 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
     exit();
 }
 
+// Lấy thông tin admin
+$admin_id = $_SESSION['user_id'];
+$sql_admin = "SELECT full_name, username FROM users WHERE id = '$admin_id'";
+$result_admin = mysqli_query($conn, $sql_admin);
+$admin_data = mysqli_fetch_assoc($result_admin);
+$admin_name = $admin_data['full_name'] ? $admin_data['full_name'] : $_SESSION['username'];
+
 // Lấy thống kê
 // 1. Tổng số người dùng (không tính admin)
 $sql_total_users = "SELECT COUNT(*) as total FROM users WHERE role != 'admin'";
@@ -29,7 +36,12 @@ $sql_total_submissions = "SELECT COUNT(*) as total FROM submissions";
 $result_submissions = mysqli_query($conn, $sql_total_submissions);
 $total_submissions = mysqli_fetch_assoc($result_submissions)['total'];
 
-// 5. Lấy danh sách người dùng gần nhất
+// 5. Tổng số báo cáo lớp học
+$sql_total_reports = "SELECT COUNT(*) as total FROM reports WHERE report_type = 'class'";
+$result_reports = mysqli_query($conn, $sql_total_reports);
+$total_reports = mysqli_fetch_assoc($result_reports)['total'];
+
+// 6. Lấy danh sách người dùng gần nhất
 $sql_recent_users = "SELECT id, username, full_name, email, role, created_at 
                      FROM users 
                      WHERE role != 'admin' 
@@ -45,6 +57,10 @@ $sql_recent_classes = "SELECT c.*, u.full_name as owner_name,
                        ORDER BY c.created_at DESC
                        LIMIT 10";
 $result_recent_classes = mysqli_query($conn, $sql_recent_classes);
+
+$style_css_ver = @filemtime(__DIR__ . '/style.css');
+$admin_style_ver = @filemtime(__DIR__ . '/admin_style.css');
+$xu_ly_ver = @filemtime(__DIR__ . '/xu_ly.js');
 ?>
 <!DOCTYPE html>
 <html lang="vi">
@@ -52,55 +68,24 @@ $result_recent_classes = mysqli_query($conn, $sql_recent_classes);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - Quản trị Hệ thống</title>
-    <link rel="stylesheet" href="admin_style.css">
+    <link rel="stylesheet" href="style.css?v=<?php echo $style_css_ver ?: time(); ?>">
+    <link rel="stylesheet" href="admin_style.css?v=<?php echo $admin_style_ver ?: time(); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0; }
-        .card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 5px 20px rgba(0,0,0,0.15); }
-        .card.blue { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
-        .card.green { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; }
-        .card.orange { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; }
-        .card.purple { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white; }
-        .card h3 { margin: 0 0 10px 0; font-size: 0.9em; opacity: 0.9; }
-        .card p { margin: 0; font-size: 2.5em; font-weight: bold; }
-        .table-container { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: 20px 0; }
-        .table-container h2 { margin-top: 0; color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-        thead { background: #f8f9fa; }
-        th { padding: 12px; text-align: left; color: #7f8c8d; font-weight: 600; border-bottom: 2px solid #dee2e6; }
-        td { padding: 12px; border-bottom: 1px solid #f0f0f0; }
-        tr:hover { background: #f8f9fa; }
-        .badge { padding: 4px 10px; border-radius: 15px; font-size: 0.85em; font-weight: bold; }
-        .badge-teacher { background: #3498db; color: white; }
-        .badge-student { background: #95a5a6; color: white; }
-        .btn-action { padding: 6px 12px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; margin: 0 2px; transition: 0.3s; }
-        .btn-view { background: #3498db; color: white; }
-        .btn-view:hover { background: #2980b9; }
-        .btn-delete { background: #e74c3c; color: white; }
-        .btn-delete:hover { background: #c0392b; }
-        .alert { padding: 15px; margin: 20px 0; border-radius: 8px; font-weight: bold; animation: slideDown 0.3s ease-out; }
-        .alert-success { background: #d4edda; color: #155724; border-left: 4px solid #28a745; }
-        .alert-error { background: #f8d7da; color: #721c24; border-left: 4px solid #dc3545; }
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .sidebar h2 { display: flex; align-items: center; gap: 10px; }
-    </style>
 </head>
-<body>
+<body class="admin-dashboard-page">
     <div class="sidebar">
-        <h2><i class="fas fa-shield-alt"></i> Admin Panel</h2>
+        <h2><i class="fas fa-shield-alt"></i> Admin Dashboard</h2>
         <ul>
             <li><a href="admin_dashboard.php"><i class="fas fa-home"></i> Trang chủ</a></li>
+            <li><a href="view_reports.php"><i class="fas fa-flag"></i> Báo cáo lớp học</a></li>
+            <li><a href="change_password.php"><i class="fas fa-key"></i> Đổi mật khẩu</a></li>
             <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
         </ul>
     </div>
     <div class="main-content">
         <header>
             <h1><i class="fas fa-tachometer-alt"></i> Bảng điều khiển Quản trị viên</h1>
-            <p style="color: #7f8c8d; margin-top: 10px;">Xin chào, <strong><?php echo htmlspecialchars($_SESSION['username']); ?></strong></p>
+            <p class="admin-welcome-text">Xin chào, <strong><?php echo htmlspecialchars($admin_name); ?></strong></p>
         </header>
         
         <?php if (isset($_SESSION['success'])): ?>
@@ -132,6 +117,12 @@ $result_recent_classes = mysqli_query($conn, $sql_recent_classes);
                 <h3><i class="fas fa-file-upload"></i> Bài nộp</h3>
                 <p><?php echo number_format($total_submissions); ?></p>
             </div>
+            <a href="view_reports.php" class="stats-link-card">
+                <div class="card card-report">
+                    <h3><i class="fas fa-flag"></i> Báo cáo lớp học</h3>
+                    <p><?php echo number_format($total_reports); ?></p>
+                </div>
+            </a>
         </section>
 
         <section class="table-container">
@@ -165,8 +156,8 @@ $result_recent_classes = mysqli_query($conn, $sql_recent_classes);
                             </tr>
                         <?php endwhile; ?>
                     <?php else: ?>
-                        <tr><td colspan="6" style="text-align: center; color: #95a5a6; padding: 30px;">
-                            <i class="fas fa-inbox" style="font-size: 3em; opacity: 0.3; display: block; margin-bottom: 10px;"></i>
+                        <tr><td colspan="6" class="empty-cell">
+                            <i class="fas fa-inbox empty-cell-icon"></i>
                             Chưa có người dùng nào
                         </td></tr>
                     <?php endif; ?>
@@ -196,26 +187,26 @@ $result_recent_classes = mysqli_query($conn, $sql_recent_classes);
                                 <td><i class="fas fa-school"></i> <strong><?php echo htmlspecialchars($class['class_name']); ?></strong></td>
                                 <td><i class="fas fa-user-tie"></i> <?php echo htmlspecialchars($class['owner_name']); ?></td>
                                 <td>
-                                    <code style="background: #f8f9fa; padding: 4px 8px; border-radius: 4px; color: #e74c3c; font-weight: bold;">
+                                    <code class="invite-code-pill">
                                         <?php echo $class['invite_code']; ?>
                                     </code>
                                 </td>
                                 <td>
-                                    <span style="background: #e3f2fd; color: #1976d2; padding: 4px 10px; border-radius: 12px; font-weight: bold;">
+                                    <span class="member-count-pill">
                                         <i class="fas fa-users"></i> <?php echo $class['member_count'] + 1; ?>
                                     </span>
                                 </td>
                                 <td><i class="far fa-clock"></i> <?php echo date('d/m/Y H:i', strtotime($class['created_at'])); ?></td>
                                 <td>
-                                    <button class="btn-action btn-view" onclick="location.href='manage_class.php?id=<?php echo $class['id']; ?>'" title="Xem chi tiết">
+                                    <button class="btn-action btn-view js-admin-open-class" data-class-id="<?php echo $class['id']; ?>" title="Xem chi tiết" type="button">
                                         <i class="fas fa-eye"></i>
                                     </button>
                                 </td>
                             </tr>
                         <?php endwhile; ?>
                     <?php else: ?>
-                        <tr><td colspan="7" style="text-align: center; color: #95a5a6; padding: 30px;">
-                            <i class="fas fa-inbox" style="font-size: 3em; opacity: 0.3; display: block; margin-bottom: 10px;"></i>
+                        <tr><td colspan="7" class="empty-cell">
+                            <i class="fas fa-inbox empty-cell-icon"></i>
                             Chưa có lớp học nào
                         </td></tr>
                     <?php endif; ?>
@@ -223,5 +214,6 @@ $result_recent_classes = mysqli_query($conn, $sql_recent_classes);
             </table>
         </section>
     </div>
+    <script src="xu_ly.js?v=<?php echo $xu_ly_ver ?: time(); ?>"></script>
 </body>
 </html>
