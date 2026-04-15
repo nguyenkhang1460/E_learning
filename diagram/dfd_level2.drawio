@@ -1,0 +1,273 @@
+<mxfile host="app.diagrams.net" modified="2026-03-30T12:00:00.000Z" agent="Mozilla/5.0" version="24.7.17" type="device">
+  <diagram id="dfd-level2" name="DFD Level 2">
+    <mxGraphModel dx="2400" dy="1800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Tieu de -->
+        <mxCell id="title" value="DFD muc 2: Chi tiet qua trinh 1.2 - Xu ly bai tap va quiz" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=20;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="600" y="20" width="1200" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- Tac nhan ben ngoai -->
+        <mxCell id="ext_teacher" value="Giang vien" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#7d7d7d;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="50" y="200" width="160" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ext_student" value="Hoc vien" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#7d7d7d;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="50" y="450" width="160" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ext_ai" value="Dich vu AI" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#7d7d7d;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="2180" y="300" width="160" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- Cac sub-process -->
+        <mxCell id="p121" value="1.2.1&#xa;Tao va quan li&#xa;bai tap/quiz" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5f5f6;strokeColor=#6aa8b0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="350" y="160" width="220" height="110" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="p122" value="1.2.2&#xa;Thu nhan va&#xa;luu bai tap" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5f5f6;strokeColor=#6aa8b0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="350" y="420" width="220" height="110" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="p123" value="1.2.3&#xa;Kiem tra thong&#xa;tin gian lan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5f5f6;strokeColor=#6aa8b0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="750" y="160" width="220" height="110" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="p124" value="1.2.4&#xa;Danh gia va&#xa;cham diem" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5f5f6;strokeColor=#6aa8b0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="750" y="420" width="220" height="110" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="p125" value="1.2.5&#xa;Tao bao cao&#xa;hoc tap" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5f5f6;strokeColor=#6aa8b0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1150" y="160" width="220" height="110" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="p126" value="1.2.6&#xa;Tao cau hoi&#xa;tu AI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5f5f6;strokeColor=#6aa8b0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1150" y="420" width="220" height="110" as="geometry"/>
+        </mxCell>
+
+        <!-- Data stores -->
+        <mxCell id="d_quiz" value="D2.1&#xa;Quiz/Bai tap" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#ffe599;strokeColor=#b7a24a;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="780" y="650" width="160" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d_submissions" value="D2.2&#xa;Submissions" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#ffe599;strokeColor=#b7a24a;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="400" y="650" width="160" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d_violations" value="D2.3&#xa;Violations Log" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#ffe599;strokeColor=#b7a24a;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1100" y="650" width="160" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d_grades" value="D2.4&#xa;Grades/Diem" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#ffe599;strokeColor=#b7a24a;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1400" y="650" width="160" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Luong du lieu tu tac nhan -->
+        <!-- Giang vien -> P1.2.1 -->
+        <mxCell id="f1" value="Thong tin bai tap&#xa;va de quiz" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.8;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="ext_teacher" target="p121">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="280" y="205"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Hoc vien -> P1.2.2 -->
+        <mxCell id="f2" value="Lam bai tap/quiz" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.8;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="ext_student" target="p122">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="280" y="475"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- P1.2.1 -> D2.1 -->
+        <mxCell id="f3" value="Luu quiz/bai tap" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.6;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p121" target="d_quiz">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="600"/>
+              <mxPoint x="860" y="600"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- D2.1 -> P1.2.6 -->
+        <mxCell id="f4" value="Thong tin quiz" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.6;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="d_quiz" target="p126">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="860" y="750"/>
+              <mxPoint x="1260" y="750"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- P1.2.6 -> ext_ai -->
+        <mxCell id="f5" value="Yeu cau tao cau hoi" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.6;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p126" target="ext_ai">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1500" y="475"/>
+              <mxPoint x="1800" y="475"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ext_ai -> P1.2.6 -->
+        <mxCell id="f6" value="Cau hoi AI" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.6;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="ext_ai" target="p126">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1800" y="505"/>
+              <mxPoint x="1500" y="505"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- P1.2.6 -> D2.1 -->
+        <mxCell id="f7" value="Cap nhat quiz" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.6;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p126" target="d_quiz">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1260" y="600"/>
+              <mxPoint x="860" y="600"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- P1.2.2 -> D2.2 -->
+        <mxCell id="f8" value="Luu submissions" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.6;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p122" target="d_submissions">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="600"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- P1.2.2 -> P1.2.3 -->
+        <mxCell id="f9" value="Du lieu submissions" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.6;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p122" target="p123">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="650" y="475"/>
+              <mxPoint x="650" y="215"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- D2.2 -> P1.2.3 -->
+        <mxCell id="f10" value="Thong tin bai nop" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.6;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="d_submissions" target="p123">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="650" y="600"/>
+              <mxPoint x="650" y="215"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- P1.2.3 -> D2.3 -->
+        <mxCell id="f11" value="Ghi nhat ky gian lan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.6;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p123" target="d_violations">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="860" y="300"/>
+              <mxPoint x="1180" y="300"/>
+              <mxPoint x="1180" y="600"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- P1.2.3 -> P1.2.4 -->
+        <mxCell id="f12" value="Ket qua kiem tra" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.6;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p123" target="p124">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="860" y="475"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- D2.1 -> P1.2.4 -->
+        <mxCell id="f13" value="Dap an de quiz" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.6;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="d_quiz" target="p124">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="860" y="550"/>
+              <mxPoint x="860" y="630"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- P1.2.4 -> D2.4 -->
+        <mxCell id="f14" value="Luu diem" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.6;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p124" target="d_grades">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1050" y="630"/>
+              <mxPoint x="1480" y="630"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- P1.2.4 -> P1.2.5 -->
+        <mxCell id="f15" value="Ket qua cham diem" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.6;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p124" target="p125">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1050" y="215"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- D2.3 -> P1.2.5 -->
+        <mxCell id="f16" value="Thong ke gian lan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.6;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="d_violations" target="p125">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1180" y="750"/>
+              <mxPoint x="1260" y="750"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- D2.4 -> P1.2.5 -->
+        <mxCell id="f17" value="Thong tin diem so" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.6;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="d_grades" target="p125">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1480" y="750"/>
+              <mxPoint x="1260" y="750"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- P1.2.5 -> Giang vien -->
+        <mxCell id="f18" value="Bao cao/Ket qua hoc tap" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.8;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p125" target="ext_teacher">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1000" y="205"/>
+              <mxPoint x="210" y="205"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- P1.2.5 -> Hoc vien -->
+        <mxCell id="f19" value="Thong bao diem va bao cao" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.8;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p125" target="ext_student">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1000" y="500"/>
+              <mxPoint x="210" y="500"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- D2.2 -> D2.4 -->
+        <mxCell id="f20" value="Thong tin submissions" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=9;labelBackgroundColor=#ffffff;dashed=1" edge="1" parent="1" source="d_submissions" target="d_grades">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="480" y="750"/>
+              <mxPoint x="1480" y="750"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Ghi chu -->
+        <mxCell id="note" value="Qua trinh 1.2 - Xu ly bai tap va quiz duoc phan tach thanh 6 sub-process:&#xa;1.2.1: Tao va quan li bai tap/quiz  |  1.2.2: Thu nhan va luu bai tap  |  1.2.3: Kiem tra thong tin gian lan&#xa;1.2.4: Danh gia va cham diem  |  1.2.5: Tao bao cao hoc tap  |  1.2.6: Tao cau hoi tu AI" style="text;html=1;strokeColor=#999999;fillColor=#f3f3f3;align=left;verticalAlign=top;fontSize=10;rounded=1;spacing=5;spacingTop=10" vertex="1" parent="1">
+          <mxGeometry x="350" y="850" width="1300" height="80" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

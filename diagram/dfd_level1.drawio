@@ -1,0 +1,102 @@
+<mxfile host="app.diagrams.net" modified="2026-03-30T11:45:00.000Z" agent="Mozilla/5.0" version="24.7.17" type="device">
+  <diagram id="dfd-level1" name="DFD Level 1">
+    <mxGraphModel dx="2000" dy="1300" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="1300" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="DFD muc 1 He thong E-learning" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=22;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="620" y="20" width="760" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ext_student" value="Hoc vien" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#7d7d7d;fontSize=15;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="60" y="510" width="190" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ext_teacher" value="Giang vien" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#7d7d7d;fontSize=15;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="60" y="300" width="190" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ext_admin" value="Quan tri vien" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#7d7d7d;fontSize=15;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="60" y="90" width="190" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ext_ai" value="Dich vu AI + Cloud" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#7d7d7d;fontSize=15;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1700" y="350" width="230" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="p11" value="1.1&#xa;Hoat dong hoc vien" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5f5f6;strokeColor=#6aa8b0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="520" y="430" width="300" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="p12" value="1.2&#xa;Xu ly bai tap - quiz" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5f5f6;strokeColor=#6aa8b0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="900" y="170" width="300" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="p13" value="1.3&#xa;Quan tri he thong" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5f5f6;strokeColor=#6aa8b0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1180" y="560" width="300" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d_users" value="D1 Users" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#ffe599;strokeColor=#b7a24a;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="950" y="40" width="150" height="42" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d_classes" value="D2 Classes" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#ffe599;strokeColor=#b7a24a;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="790" y="220" width="150" height="42" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d_members" value="D3 Class Members" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#ffe599;strokeColor=#b7a24a;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="780" y="300" width="170" height="42" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d_lectures" value="D4 Lectures" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#ffe599;strokeColor=#b7a24a;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="860" y="640" width="150" height="42" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d_assign" value="D5 Assignments" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#ffe599;strokeColor=#b7a24a;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="940" y="390" width="160" height="42" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d_quiz" value="D6 Quiz Questions" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#ffe599;strokeColor=#b7a24a;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="1120" y="320" width="170" height="42" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d_sub" value="D7 Submissions" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#ffe599;strokeColor=#b7a24a;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="1030" y="760" width="150" height="42" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d_reports" value="D8 Reports" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#ffe599;strokeColor=#b7a24a;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="1360" y="760" width="140" height="42" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="f1" value="Dang nhap / dang xuat" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.8;fontSize=12;labelBackgroundColor=#ffffff" edge="1" parent="1" source="ext_student" target="p11"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f2" value="Tham gia lop, lam quiz" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.8;fontSize=12;labelBackgroundColor=#ffffff" edge="1" parent="1" source="ext_student" target="p11"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="360" y="570"/></Array></mxGeometry></mxCell>
+        <mxCell id="f3" value="Noi dung bai hoc, diem" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.8;fontSize=12;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p11" target="ext_student"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="330" y="530"/></Array></mxGeometry></mxCell>
+
+        <mxCell id="f4" value="Tao bai giang / assignment" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.8;fontSize=12;labelBackgroundColor=#ffffff" edge="1" parent="1" source="ext_teacher" target="p13"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="420" y="350"/><mxPoint x="420" y="625"/></Array></mxGeometry></mxCell>
+        <mxCell id="f5" value="Bang diem lop" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.8;fontSize=12;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p13" target="ext_teacher"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="450" y="650"/><mxPoint x="450" y="410"/></Array></mxGeometry></mxCell>
+
+        <mxCell id="f6" value="Quan ly tai khoan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.8;fontSize=12;labelBackgroundColor=#ffffff" edge="1" parent="1" source="ext_admin" target="p13"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="410" y="150"/><mxPoint x="410" y="600"/></Array></mxGeometry></mxCell>
+        <mxCell id="f7" value="Bao cao he thong" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.8;fontSize=12;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p13" target="ext_admin"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="470" y="580"/><mxPoint x="470" y="120"/></Array></mxGeometry></mxCell>
+
+        <mxCell id="f8" value="Yeu cau de quiz" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.8;fontSize=12;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p12" target="ext_ai"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1540" y="240"/></Array></mxGeometry></mxCell>
+        <mxCell id="f9" value="Ket qua AI + URL tep" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.8;fontSize=12;labelBackgroundColor=#ffffff" edge="1" parent="1" source="ext_ai" target="p13"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1600" y="520"/></Array></mxGeometry></mxCell>
+
+        <mxCell id="f10" value="Doc/Ghi" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=11;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p13" target="d_users"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f11" value="Doc/Ghi" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=11;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p13" target="d_classes"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f12" value="Doc/Ghi" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=11;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p13" target="d_members"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f13" value="Doc/Ghi" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=11;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p13" target="d_lectures"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f14" value="Doc/Ghi" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=11;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p12" target="d_assign"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f15" value="Doc/Ghi" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=11;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p12" target="d_quiz"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f16" value="Luu bai nop" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=11;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p11" target="d_sub"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f17" value="Lay diem" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=11;labelBackgroundColor=#ffffff" edge="1" parent="1" source="d_sub" target="p13"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f18" value="Luu report" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=11;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p13" target="d_reports"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="f19" value="Lay de bai" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=11;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p11" target="p12"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f20" value="Tra ket qua cham" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=11;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p12" target="p11"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="770" y="330"/></Array></mxGeometry></mxCell>
+        <mxCell id="f21" value="Dong bo du lieu" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=11;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p12" target="p13"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

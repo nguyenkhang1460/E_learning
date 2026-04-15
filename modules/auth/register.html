@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký - Hệ thống học tập AI</title>
+    <link rel="stylesheet" href="/E_learning/assets/css/style.css">
+</head>
+<body class="login-page">
+
+    <div class="login-box">
+        <h2>Đăng Ký Tài Khoản</h2>
+        
+        <!-- Hiển thị thông báo lỗi nếu có -->
+        <div id="errorMessage" class="alert alert-error" hidden></div>
+        <div id="successMessage" class="alert alert-success" hidden></div>
+        
+        <form action="/E_learning/modules/auth/register_process.php" method="POST">
+            <div class="input-group">
+                <label for="full_name">Họ và tên</label>
+                <input type="text" id="full_name" name="full_name" required placeholder="Nhập họ và tên đầy đủ" minlength="2">
+            </div>
+
+            <div class="input-group">
+                <label for="username">Tên đăng nhập</label>
+                <input type="text" id="username" name="username" required placeholder="Nhập username" minlength="3">
+            </div>
+
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="email@example.com">
+            </div>
+
+            <div class="input-group">
+                <label for="password">Mật khẩu</label>
+                <input type="password" id="password" name="password" required placeholder="********" minlength="6">
+            </div>
+
+            <div class="input-group">
+                <label for="confirm_password">Xác nhận mật khẩu</label>
+                <input type="password" id="confirm_password" name="confirm_password" required placeholder="********" minlength="6">
+            </div>
+
+            <button type="submit" name="register">Đăng ký</button>
+        </form>
+
+        <div class="register-link">
+            <p>Đã có tài khoản? <a href="/E_learning/modules/auth/login.php">Đăng nhập</a></p>
+        </div>
+
+        <p class="footer-text">Đồ án 2 - Trang web học tập tích hợp AI</p>
+    </div>
+
+    <script>
+        // Hiển thị thông báo lỗi nếu có
+        const urlParams = new URLSearchParams(window.location.search);
+        const error = urlParams.get('error');
+        const success = urlParams.get('success');
+        const errorDiv = document.getElementById('errorMessage');
+        const successDiv = document.getElementById('successMessage');
+
+        function showError(message) {
+            successDiv.hidden = true;
+            errorDiv.textContent = message;
+            errorDiv.hidden = false;
+        }
+
+        function showSuccess(message) {
+            errorDiv.hidden = true;
+            successDiv.textContent = message;
+            successDiv.hidden = false;
+        }
+        
+        if (error === 'password_mismatch') {
+            showError('❌ Mật khẩu xác nhận không khớp!');
+        } else if (error === 'username_exists') {
+            showError('❌ Tên đăng nhập đã tồn tại!');
+        } else if (error === 'email_exists') {
+            showError('❌ Email đã được đăng ký!');
+        } else if (error === 'invalid_data') {
+            showError('❌ Vui lòng điền đầy đủ thông tin!');
+        } else if (error === 'password_too_short') {
+            showError('❌ Mật khẩu phải có ít nhất 6 ký tự!');
+        } else if (error === 'database_error') {
+            showError('❌ Lỗi hệ thống, vui lòng thử lại!');
+        }
+        
+        if (success === '1') {
+            showSuccess('✅ Đăng ký thành công! Đang chuyển hướng...');
+            setTimeout(() => {
+                window.location.href = 'login.php';
+            }, 2000);
+        }
+        
+        // Kiểm tra mật khẩu khớp
+        document.querySelector('form').onsubmit = function(e) {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+            
+            if (password !== confirmPassword) {
+                e.preventDefault();
+                showError('❌ Mật khẩu xác nhận không khớp!');
+                return false;
+            }
+            
+            console.log("Đang gửi yêu cầu đăng ký...");
+        };
+    </script>
+</body>
+</html>

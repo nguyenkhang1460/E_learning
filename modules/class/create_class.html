@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo lớp học mới - AI Learning</title>
+    <link rel="stylesheet" href="/E_learning/assets/css/create_class_style.css">
+    <style>
+        #private_section {
+            display: none; background: #f0f7ff; padding: 20px;
+            border-radius: 12px; margin-bottom: 25px; border: 1px dashed #007bff;
+        }
+        .req-item { display: flex; gap: 10px; margin-bottom: 12px; }
+        .btn-add { background: #007bff !important; width: auto !important; padding: 10px 20px !important; margin-top: 10px; }
+        .btn-del { background: #dc3545 !important; width: 45px !important; padding: 0 !important; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Tạo Lớp Học Mới</h2>
+        <form action="/E_learning/modules/class/create_class_process.php" method="POST">
+            <div class="form-group">
+                <label>Tên lớp học</label>
+                <input type="text" name="class_name" required placeholder="Ví dụ: Lập trình PHP nâng cao">
+            </div>
+
+            <div class="form-group">
+                <label>Mô tả lớp học</label>
+                <textarea name="description" rows="3" placeholder="Mô tả mục tiêu lớp học..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Chế độ phòng học</label>
+                <select id="class_type" name="class_type" onchange="togglePrivateMode()" style="width:100%; padding:12px; border-radius:8px;">
+                    <option value="public">Công khai (Vào thẳng)</option>
+                    <option value="private">Riêng tư (Yêu cầu điền thông tin duyệt)</option>
+                </select>
+            </div>
+
+            <div id="private_section">
+                <label style="color:#007bff; font-weight:bold;">Vui lòng cung cấp thông tin cần thiết:</label>
+                <div id="req_list">
+                    <div class="req-item">
+                        <input type="text" name="requirements[]" value="Họ và Tên" required style="flex:1; margin-bottom:0;">
+                    </div>
+                    <div class="req-item">
+                        <input type="text" name="requirements[]" value="Mã số sinh viên" required style="flex:1; margin-bottom:0;">
+                    </div>
+                </div>
+                <button type="button" class="btn-add" onclick="addRequirement()">+ Thêm yêu cầu khác</button>
+            </div>
+
+            <button type="submit" name="btn_create">Xác nhận tạo lớp</button>
+            <a href="/E_learning/dashboard/user_dashboard.php" class="back-link">← Quay lại Dashboard</a>
+        </form>
+    </div>
+
+    <script>
+        function togglePrivateMode() {
+            const isPrivate = document.getElementById('class_type').value === 'private';
+            document.getElementById('private_section').style.display = isPrivate ? 'block' : 'none';
+        }
+        function addRequirement() {
+            const div = document.createElement('div');
+            div.className = 'req-item';
+            div.innerHTML = `<input type="text" name="requirements[]" placeholder="VD: Số điện thoại" required style="flex:1; margin-bottom:0;">
+                             <button type="button" class="btn-del" onclick="this.parentElement.remove()">✕</button>`;
+            document.getElementById('req_list').appendChild(div);
+        }
+    </script>
+</body>
+</html>

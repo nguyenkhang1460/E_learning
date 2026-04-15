@@ -1,0 +1,104 @@
+<mxfile host="app.diagrams.net" modified="2026-03-30T12:50:00.000Z" agent="Mozilla/5.0" version="24.7.17" type="device">
+  <diagram id="dfd-level2-admin" name="DFD Quan Tri He Thong">
+    <mxGraphModel dx="2300" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2300" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="DFD muc 2: Phan ra tu 1.3 Quan tri he thong" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=20;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="560" y="20" width="1180" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ext_admin" value="Quan tri vien" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#c9daf8;strokeColor=#6d9eeb;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="850" y="540" width="260" height="160" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ext_teacher" value="Giang vien" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#7d7d7d;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="60" y="240" width="170" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ext_student" value="Hoc vien" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#7d7d7d;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="60" y="860" width="170" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="p131" value="1.3.1&#xa;Quan ly&#xa;tai khoan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5f5f6;strokeColor=#6aa8b0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="330" y="760" width="220" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="p132" value="1.3.2&#xa;Quan ly vai tro&#xa;phan quyen" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5f5f6;strokeColor=#6aa8b0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="650" y="960" width="220" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="p133" value="1.3.3&#xa;Quan ly lop hoc&#xa;thanh vien" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5f5f6;strokeColor=#6aa8b0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="330" y="430" width="220" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="p134" value="1.3.4&#xa;Quan ly bai giang" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5f5f6;strokeColor=#6aa8b0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="650" y="250" width="220" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="p135" value="1.3.5&#xa;Quan ly bai tap&#xa;va quiz" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5f5f6;strokeColor=#6aa8b0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="970" y="250" width="220" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="p136" value="1.3.6&#xa;Kiem soat bai nop&#xa;va diem" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5f5f6;strokeColor=#6aa8b0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1290" y="430" width="220" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="p137" value="1.3.7&#xa;Tong hop bao cao" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5f5f6;strokeColor=#6aa8b0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1290" y="760" width="220" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="p138" value="1.3.8&#xa;Duyet yeu cau&#xa;tham gia lop" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5f5f6;strokeColor=#6aa8b0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="970" y="960" width="220" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d_users" value="D1 Users" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#ffe599;strokeColor=#b7a24a;fontSize=11;fontStyle=1" vertex="1" parent="1"><mxGeometry x="300" y="1140" width="150" height="44" as="geometry"/></mxCell>
+        <mxCell id="d_roles" value="D9 Roles" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#ffe599;strokeColor=#b7a24a;fontSize=11;fontStyle=1" vertex="1" parent="1"><mxGeometry x="560" y="1140" width="150" height="44" as="geometry"/></mxCell>
+        <mxCell id="d_classes" value="D2 Classes" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#ffe599;strokeColor=#b7a24a;fontSize=11;fontStyle=1" vertex="1" parent="1"><mxGeometry x="280" y="560" width="150" height="44" as="geometry"/></mxCell>
+        <mxCell id="d_members" value="D3 Class Members" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#ffe599;strokeColor=#b7a24a;fontSize=11;fontStyle=1" vertex="1" parent="1"><mxGeometry x="520" y="560" width="170" height="44" as="geometry"/></mxCell>
+        <mxCell id="d_lectures" value="D4 Lectures" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#ffe599;strokeColor=#b7a24a;fontSize=11;fontStyle=1" vertex="1" parent="1"><mxGeometry x="680" y="120" width="150" height="44" as="geometry"/></mxCell>
+        <mxCell id="d_assign" value="D5 Assignments" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#ffe599;strokeColor=#b7a24a;fontSize=11;fontStyle=1" vertex="1" parent="1"><mxGeometry x="980" y="120" width="160" height="44" as="geometry"/></mxCell>
+        <mxCell id="d_quiz" value="D6 Quiz Questions" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#ffe599;strokeColor=#b7a24a;fontSize=11;fontStyle=1" vertex="1" parent="1"><mxGeometry x="1210" y="120" width="170" height="44" as="geometry"/></mxCell>
+        <mxCell id="d_sub" value="D7 Submissions" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#ffe599;strokeColor=#b7a24a;fontSize=11;fontStyle=1" vertex="1" parent="1"><mxGeometry x="1520" y="560" width="150" height="44" as="geometry"/></mxCell>
+        <mxCell id="d_reports" value="D8 Reports" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#ffe599;strokeColor=#b7a24a;fontSize=11;fontStyle=1" vertex="1" parent="1"><mxGeometry x="1550" y="920" width="140" height="44" as="geometry"/></mxCell>
+
+        <mxCell id="f1" value="Yeu cau quan tri" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.7;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="ext_admin" target="p131"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f2" value="Thong tin tai khoan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p131" target="d_users"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f3" value="Cap nhat phan quyen" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p131" target="p132"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f4" value="DS vai tro" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="d_roles" target="p132"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f5" value="Luu phan quyen" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p132" target="d_roles"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="f6" value="Quan ly lop" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.6;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="ext_admin" target="p133"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f7" value="DS lop" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="d_classes" target="p133"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f8" value="DS thanh vien" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="d_members" target="p133"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f9" value="Cap nhat lop/thanh vien" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p133" target="d_classes"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f10" value="Dong bo thanh vien" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p133" target="d_members"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="f11" value="Cap nhat bai giang" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.6;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="ext_teacher" target="p134"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f12" value="Luu bai giang" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p134" target="d_lectures"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="f13" value="Cap nhat assignment/quiz" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.6;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="ext_teacher" target="p135"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f14" value="Luu assignment" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p135" target="d_assign"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f15" value="Luu cau hoi quiz" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p135" target="d_quiz"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="f16" value="Kiem soat bai nop" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.6;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="ext_admin" target="p136"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f17" value="Du lieu bai nop" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="d_sub" target="p136"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f18" value="Cap nhat diem/nhan xet" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p136" target="d_sub"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="f19" value="Tong hop bao cao" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.6;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p136" target="p137"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f20" value="Luu bao cao" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p137" target="d_reports"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f21" value="Bao cao he thong" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.6;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p137" target="ext_admin"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="f22" value="Yeu cau tham gia lop" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.6;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="ext_student" target="p138"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f23" value="Duyet/tu choi" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p138" target="d_members"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="f24" value="Cap nhat thanh vien" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;strokeWidth=1.4;fontSize=10;labelBackgroundColor=#ffffff" edge="1" parent="1" source="p138" target="p133"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="note" value="Phan ra tu qua trinh 1.3 Quan tri he thong trong DFD muc 1.&#xa;Bao gom 8 qua trinh con: quan ly tai khoan, phan quyen, quan ly lop, bai giang, assignment/quiz, bai nop, bao cao, duyet yeu cau lop." style="text;html=1;strokeColor=#999999;fillColor=#f3f3f3;align=left;verticalAlign=top;fontSize=10;rounded=1;spacing=5;spacingTop=10" vertex="1" parent="1">
+          <mxGeometry x="330" y="1320" width="1280" height="84" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
