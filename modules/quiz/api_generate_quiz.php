@@ -1,5 +1,10 @@
 <?php
-// 1. Tắt display_errors — không được làm hỏng JSON output
+/**
+ * API Generate Quiz — Gọi AI tạo câu hỏi trắc nghiệm
+ * Đã fix: Thêm kiểm tra phân quyền (lecture ownership)
+ */
+
+// Tắt display_errors — không được làm hỏng JSON output
 error_reporting(0);
 ini_set('display_errors', 0);
 header('Content-Type: application/json; charset=utf-8');
@@ -15,6 +20,25 @@ use Smalot\PdfParser\Parser as PdfParser;
 if (!Auth::check()) {
     echo json_encode(['error' => 'Bạn cần đăng nhập để thực hiện tác vụ này.']);
     exit();
+}
+
+// ── Kiểm tra phân quyền ────────────────────────────────────────────────
+$lectureId = (int)($_GET['lecture_id'] ?? $_POST['lecture_id'] ?? 0);
+
+if ($lectureId > 0) {
+    // Nếu dùng tài liệu từ hệ thống, kiểm tra user có quyền truy cập
+    $lectureRepo = new LectureRepository();
+    $lecture = $lectureRepo->findById($lectureId);
+
+    if ($lecture) {
+        $classRepo = new ClassRepository();
+        $classInfo = $classRepo->findById((int)$lecture['class_id']);
+
+        if (!$classInfo || !Auth::isOwnerOrAdmin((int)$classInfo['owner_id'])) {
+            echo json_encode(['error' => 'Bạn không có quyền sử dụng tài liệu này để tạo quiz!']);
+            exit();
+        }
+    }
 }
 
 // Load Groq API config
@@ -35,7 +59,6 @@ if (empty($groqConfig['api_key'])) {
 try {
     $numQuestions = max(1, min(20, (int)($_GET['num'] ?? $_POST['num'] ?? 5)));
     $difficulty   = $_GET['difficulty'] ?? $_POST['difficulty'] ?? 'medium';
-    $lectureId    = (int)($_GET['lecture_id'] ?? 0);
     $isUpload     = isset($_FILES['upload_file']) && $_FILES['upload_file']['error'] === UPLOAD_ERR_OK;
 
     $service   = new QuizService();

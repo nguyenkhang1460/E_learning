@@ -108,18 +108,11 @@ class ClassRepository
                     }
                 }
 
+                // Xóa submissions (quiz_submissions sẽ tự xóa qua ON DELETE CASCADE)
                 $db->execute(
                     "DELETE FROM submissions WHERE assignment_id IN ($placeholders)",
                     $assignmentIds, $types
                 );
-
-                // Xóa quiz_submissions nếu có bảng
-                if ($db->count("SHOW TABLES LIKE 'quiz_submissions'") > 0) {
-                    $db->execute(
-                        "DELETE FROM quiz_submissions WHERE assignment_id IN ($placeholders)",
-                        $assignmentIds, $types
-                    );
-                }
 
                 // Xóa file đáp án
                 $answerKeys = $db->fetchAll(

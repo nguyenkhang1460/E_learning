@@ -1,6 +1,6 @@
 <?php
 /**
- * Quiz Result View — Tách HTML khỏi submit_quiz_process.php
+ * Quiz Result View — Hiển thị kết quả bài làm trắc nghiệm
  * Nhận dữ liệu qua $_SESSION['quiz_result']
  */
 session_start();
@@ -21,6 +21,9 @@ $correctCount   = $result['correctCount'];
 $totalQuestions = $result['totalQuestions'];
 $title          = htmlspecialchars($result['title']);
 $percentage     = $totalQuestions > 0 ? round(($correctCount / $totalQuestions) * 100, 1) : 0;
+$violationCount = $result['violationCount'] ?? 0;
+$originalScore  = $result['originalScore'] ?? $score;
+$classId        = $result['classId'] ?? 0;
 ?>
 <!DOCTYPE html>
 <html lang="vi">
@@ -71,6 +74,14 @@ $percentage     = $totalQuestions > 0 ? round(($correctCount / $totalQuestions) 
             margin: 20px 0;
         }
         .details p { margin: 10px 0; color: #555; font-size: 1.1em; }
+        .violation-info {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+        }
+        .violation-info p { margin: 5px 0; color: #856404; font-size: 0.95em; }
         .redirect-text { color: #888; font-size: 0.9em; margin-top: 20px; }
         .btn-dashboard {
             display: inline-block;
@@ -104,8 +115,19 @@ $percentage     = $totalQuestions > 0 ? round(($correctCount / $totalQuestions) 
                <strong>Tỷ lệ chính xác:</strong> <?= $percentage ?>%</p>
         </div>
 
-        <a href="<?= Routes::DASHBOARD_USER ?>" class="btn-dashboard">
-            <i class="fas fa-home"></i> Về trang chủ
+        <?php if ($violationCount > 0): ?>
+        <div class="violation-info">
+            <p><i class="fas fa-exclamation-triangle"></i>
+               <strong>Số lần vi phạm:</strong> <?= $violationCount ?></p>
+            <p><i class="fas fa-calculator"></i>
+               <strong>Điểm trước khi trừ:</strong> <?= number_format($originalScore, 2) ?>/10</p>
+            <p><i class="fas fa-minus-circle"></i>
+               <strong>Điểm bị trừ:</strong> -<?= $violationCount ?> (do vi phạm quy định)</p>
+        </div>
+        <?php endif; ?>
+
+        <a href="<?= $classId > 0 ? Routes::manageClass($classId) : Routes::DASHBOARD_USER ?>" class="btn-dashboard">
+            <i class="fas fa-arrow-left"></i> Quay lại lớp học
         </a>
 
         <p class="redirect-text">
@@ -117,12 +139,13 @@ $percentage     = $totalQuestions > 0 ? round(($correctCount / $totalQuestions) 
     <script>
         let seconds = 5;
         const countdown = document.getElementById('countdown');
+        const redirectUrl = '<?= $classId > 0 ? Routes::manageClass($classId) : Routes::DASHBOARD_USER ?>';
         const interval = setInterval(() => {
             seconds--;
             countdown.textContent = seconds;
             if (seconds <= 0) {
                 clearInterval(interval);
-                window.location.href = '<?= Routes::DASHBOARD_USER ?>';
+                window.location.href = redirectUrl;
             }
         }, 1000);
     </script>

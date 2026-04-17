@@ -47,12 +47,26 @@ class QuizService
 
     /**
      * Chấm điểm bài làm quiz
+     *
+     * Flow:
+     *   1. Validate assignment + deadline + đã nộp chưa
+     *   2. Chấm từng câu hỏi
+     *   3. Xử lý anti-cheat (validate server-side)
+     *   4. Lưu vào submissions (bảng chính) → lấy submission_id
+     *   5. Lưu chi tiết từng câu vào quiz_submissions (submission_id, question_id, ...)
      */
     public function grade(int $assignmentId, int $userId, array $postData): array
     {
         $assignment = $this->assignmentRepo->findById($assignmentId);
         if (!$assignment) {
             return ['success' => false, 'message' => 'Không tìm thấy bài tập!'];
+        }
+
+        // Kiểm tra deadline
+        if (!empty($assignment['deadline'])) {
+            if (time() > strtotime($assignment['deadline'])) {
+                return ['success' => false, 'message' => '❌ Đã hết thời hạn nộp bài! Bài làm không được chấp nhận.'];
+            }
         }
 
         // Lấy đáp án đúng từ quiz_questions
@@ -66,40 +80,80 @@ class QuizService
             return ['success' => false, 'message' => 'Bạn đã nộp bài rồi!'];
         }
 
+        // ── Chấm điểm từng câu ─────────────────────────────────────────────
+        $userAnswers = $postData['ans'] ?? [];
         $correctCount   = 0;
         $totalQuestions = count($questions);
-        $userAnswers    = [];
+        $details        = [];
 
         foreach ($questions as $q) {
-            $qId       = $q['id'];
-            $fieldName = 'answer_' . $qId;
-            $userAns   = isset($postData[$fieldName]) ? (int)$postData[$fieldName] : -1;
-            $userAnswers[$qId] = $userAns;
+            $qId        = (int)$q['id'];
+            $correctIdx = (int)$q['correct_option'];
+            $selectedIdx = isset($userAnswers[$qId]) ? (int)$userAnswers[$qId] : -1;
 
-            if ($userAns === (int)$q['correct_option']) {
+            $isCorrect = ($selectedIdx === $correctIdx) ? 1 : 0;
+            if ($isCorrect) {
                 $correctCount++;
             }
+
+            $details[] = [
+                'question_id' => $qId,
+                'selected'    => $selectedIdx,
+                'is_correct'  => $isCorrect,
+            ];
         }
 
-        // Tính điểm trên thang 10
+        // Tính điểm hệ 10
         $score = $totalQuestions > 0
                ? round(($correctCount / $totalQuestions) * 10, 2)
                : 0;
 
-        $answersJson = json_encode($userAnswers, JSON_UNESCAPED_UNICODE);
+        // ── Anti-cheat (validate server-side) ───────────────────────────────
+        $violationCount = max(0, min(10, (int)($postData['violation_count'] ?? 0)));
 
-        // Lưu vào quiz_submissions
-        $this->quizRepo->saveSubmission($assignmentId, $userId, $answersJson, $score);
+        // Validate tab_switches là JSON hợp lệ, ngăn injection
+        $rawTabSwitches = $postData['tab_switches'] ?? '[]';
+        $decodedSwitches = json_decode($rawTabSwitches, true);
+        if (!is_array($decodedSwitches)) {
+            $decodedSwitches = [];
+            $violationCount  = 0; // Reset nếu dữ liệu không hợp lệ
+        }
+        $safeTabSwitches = json_encode($decodedSwitches, JSON_UNESCAPED_UNICODE);
 
-        // Lưu vào submissions (backward compat)
-        $this->assignmentRepo->saveLegacySubmission($assignmentId, $userId, $score);
+        // Trừ điểm vi phạm (mỗi lần trừ 1 điểm)
+        $originalScore = $score;
+        if ($violationCount > 0) {
+            $score = max(0, $score - $violationCount);
+        }
+
+        // ── 1. Lưu vào submissions (bảng chính) ────────────────────────────
+        $submissionId = $this->assignmentRepo->saveQuizSubmission(
+            $assignmentId, $userId, $score, $violationCount, $safeTabSwitches
+        );
+
+        if ($submissionId <= 0) {
+            return ['success' => false, 'message' => 'Lỗi khi lưu kết quả bài làm!'];
+        }
+
+        // ── 2. Lưu chi tiết từng câu vào quiz_submissions ──────────────────
+        foreach ($details as $item) {
+            $this->quizRepo->saveQuestionAnswer(
+                $submissionId,
+                $item['question_id'],
+                $item['selected'],
+                $item['is_correct']
+            );
+        }
 
         return [
             'success'        => true,
             'score'          => $score,
+            'originalScore'  => $originalScore,
             'correctCount'   => $correctCount,
             'totalQuestions' => $totalQuestions,
+            'violationCount' => $violationCount,
             'title'          => $assignment['title'],
+            'classId'        => (int)$assignment['class_id'],
         ];
     }
 

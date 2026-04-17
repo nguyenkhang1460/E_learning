@@ -1,24 +1,43 @@
 <?php
+/**
+ * Take Quiz — Trang làm bài trắc nghiệm
+ * Đã fix: SQL Injection — thay raw mysqli bằng prepared statements
+ */
 session_start();
 require_once __DIR__ . '/../../config/db_config.php';
-mysqli_set_charset($conn, "utf8mb4");
+require_once __DIR__ . '/../../core/autoload.php';
 
-$id = intval($_GET['id']);
+Auth::requireLogin();
 
-// Kiểm tra xem học viên đã làm bài này chưa
-if (isset($_SESSION['user_id'])) {
-    $user_id = intval($_SESSION['user_id']);
-    $check_submission = mysqli_query($conn, "SELECT id FROM submissions WHERE assignment_id = $id AND user_id = $user_id LIMIT 1");
-    if (mysqli_num_rows($check_submission) > 0) {
-        $_SESSION['flash_info'] = '⚠️ Bạn đã hoàn thành bài kiểm tra này rồi! Mỗi học viên chỉ được làm bài một lần duy nhất.';
-        header("Location: /E_learning/modules/assignment/view_assignment_detail.php?id=$id");
-        exit();
-    }
+$id     = (int)($_GET['id'] ?? 0);
+$userId = Auth::userId();
+
+if ($id <= 0) {
+    Redirect::withError(Routes::DASHBOARD_USER, 'Bài tập không hợp lệ!');
 }
 
-// Lấy thông tin bài tập bao gồm thời gian và deadline
-$assignment_query = mysqli_query($conn, "SELECT duration, deadline FROM assignments WHERE id = $id");
-$assignment_data = mysqli_fetch_assoc($assignment_query);
+$db = Database::getInstance();
+
+// Kiểm tra xem học viên đã làm bài này chưa (prepared statement)
+$existingSub = $db->fetchOne(
+    'SELECT id FROM submissions WHERE assignment_id = ? AND user_id = ? LIMIT 1',
+    [$id, $userId], 'ii'
+);
+if ($existingSub) {
+    Session::flash('info', '⚠️ Bạn đã hoàn thành bài kiểm tra này rồi! Mỗi học viên chỉ được làm bài một lần duy nhất.');
+    header("Location: /E_learning/modules/assignment/view_assignment_detail.php?id=$id");
+    exit();
+}
+
+// Lấy thông tin bài tập (prepared statement)
+$assignment_data = $db->fetchOne(
+    'SELECT duration, deadline FROM assignments WHERE id = ?',
+    [$id], 'i'
+);
+
+if (!$assignment_data) {
+    Redirect::withError(Routes::DASHBOARD_USER, 'Không tìm thấy bài tập!');
+}
 
 // Kiểm tra deadline
 $is_deadline_passed = false;
@@ -29,8 +48,9 @@ if ($assignment_data['deadline']) {
     }
 }
 
-// Lấy danh sách câu hỏi từ bảng quiz_questions đã tạo
-$query = mysqli_query($conn, "SELECT * FROM quiz_questions WHERE assignment_id = $id");
+// Lấy danh sách câu hỏi (prepared statement)
+$quizRepo  = new QuizRepository();
+$questions = $quizRepo->getQuestionsByAssignment($id);
 ?>
 
 <!DOCTYPE html>
@@ -92,19 +112,19 @@ $query = mysqli_query($conn, "SELECT * FROM quiz_questions WHERE assignment_id =
                 <input type="hidden" name="violation_count" value="0" id="violationInput">
                 <input type="hidden" name="tab_switches" value="[]" id="tabSwitchesInput">
 
-                <?php while($row = mysqli_fetch_assoc($query)): 
-                    $opts = json_decode($row['options'], true); // Giải mã JSON đáp án
+                <?php foreach ($questions as $row):
+                    $opts = json_decode($row['options'], true);
                 ?>
                 <div class="question">
-                    <p><strong><?php echo $row['question_text']; ?></strong></p>
+                    <p><strong><?php echo htmlspecialchars($row['question_text']); ?></strong></p>
                     <?php foreach($opts as $idx => $text): ?>
                         <label class="option">
                             <input type="radio" name="ans[<?php echo $row['id']; ?>]" value="<?php echo $idx; ?>" required>
-                            <?php echo $text; ?>
+                            <?php echo htmlspecialchars($text); ?>
                         </label>
                     <?php endforeach; ?>
                 </div>
-                <?php endwhile; ?>
+                <?php endforeach; ?>
 
                 <button type="submit" class="btn-submit">NỘP BÀI LÀM</button>
             </form>

@@ -73,30 +73,29 @@ class AssignmentRepository
 
     // ── Submissions ────────────────────────────────────────────────────────
 
+    /**
+     * Kiểm tra user đã nộp bài chưa — qua bảng submissions
+     */
     public function hasSubmitted(int $assignmentId, int $userId): bool
     {
         return $this->db->count(
-            'SELECT id FROM quiz_submissions WHERE assignment_id = ? AND user_id = ?',
+            'SELECT id FROM submissions WHERE assignment_id = ? AND user_id = ?',
             [$assignmentId, $userId], 'ii'
         ) > 0;
     }
 
-    public function saveQuizSubmission(int $assignmentId, int $userId, string $answersJson, float $score): int
+    /**
+     * Lưu kết quả quiz vào bảng submissions
+     * Khớp với schema thực tế: (assignment_id, user_id, student_file_url, student_file_type, ai_score, violation_count, violation_log)
+     * Trả về submission_id để dùng cho quiz_submissions
+     */
+    public function saveQuizSubmission(int $assignmentId, int $userId, float $score, int $violationCount = 0, string $violationLog = '[]'): int
     {
         return $this->db->insert(
-            'INSERT INTO quiz_submissions (assignment_id, user_id, answers, score) VALUES (?, ?, ?, ?)',
-            [$assignmentId, $userId, $answersJson, $score],
-            'iisd'
-        );
-    }
-
-    public function saveLegacySubmission(int $assignmentId, int $userId, float $score): void
-    {
-        $this->db->execute(
-            "INSERT INTO submissions (assignment_id, user_id, student_file, submitted_date, score)
-             VALUES (?, ?, 'quiz_submission', NOW(), ?)",
-            [$assignmentId, $userId, $score],
-            'iid'
+            "INSERT INTO submissions (assignment_id, user_id, student_file_url, student_file_type, ai_score, violation_count, violation_log)
+             VALUES (?, ?, '', 'quiz', ?, ?, ?)",
+            [$assignmentId, $userId, $score, $violationCount, $violationLog],
+            'iidis'
         );
     }
 
